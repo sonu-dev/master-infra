@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Master.Common
+namespace Master.QuartzScheduler
 {
     public class Class1
     {

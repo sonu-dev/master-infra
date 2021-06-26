@@ -5,11 +5,17 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMq", "RabbitMq", "{70004E5B-1C74-463A-8A4A-291F8CE400E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.RabbitMq", "Master\RabbitMq\Master.RabbitMq\Master.RabbitMq.csproj", "{E01E1F5B-8621-426C-B207-A0AA608CB9B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.RabbitMq", "Master\RabbitMq\Master.RabbitMq\Master.RabbitMq.csproj", "{E01E1F5B-8621-426C-B207-A0AA608CB9B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.RabbitMq.Client", "Master\RabbitMq\Master.RabbitMq.Client\Master.RabbitMq.Client.csproj", "{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.RabbitMq.Client", "Master\RabbitMq\Master.RabbitMq.Client\Master.RabbitMq.Client.csproj", "{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Common", "Master\Master.Common\Master.Common.csproj", "{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Common", "Master\Master.Common\Master.Common.csproj", "{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuartzScheduler", "QuartzScheduler", "{91D07EC2-AD77-4767-BFA4-BEDF1F683554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.QuartzScheduler", "Master\QuartzScheduler\Master.QuartzScheduler\Master.QuartzScheduler.csproj", "{D547B254-1806-4449-960D-B1778ABA73F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.QuartzScheduler.Client", "Master\QuartzScheduler\Master.QuartzScheduler.Client\Master.QuartzScheduler.Client.csproj", "{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +35,14 @@ Global
 		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D547B254-1806-4449-960D-B1778ABA73F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D547B254-1806-4449-960D-B1778ABA73F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +50,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E01E1F5B-8621-426C-B207-A0AA608CB9B2} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
 		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
+		{D547B254-1806-4449-960D-B1778ABA73F7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
+		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7257EF69-09D7-4DCA-A8CA-0873FEFB5A19}
