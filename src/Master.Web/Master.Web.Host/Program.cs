@@ -14,6 +14,7 @@ namespace Master.Web.Host
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             GenericHost.CreateDefaultBuilder(args)
+            // Default Asp.Net Core Looging Provider
             .ConfigureLogging(logging =>
             {
                 logging.ClearProviders();

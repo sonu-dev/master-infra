@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Master.Web.Api.Controllers
@@ -18,6 +17,7 @@ namespace Master.Web.Api.Controllers
         [HttpGet]
         public async Task<string> PingAsync()
         {
+            Log.LogDebug($"Called at {DateTime.Now}");
             return await Task.FromResult($"Ping at {DateTime.Now}");
         }
     }
