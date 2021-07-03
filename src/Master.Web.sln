@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Web.Host", "Master.Web\Master.Web.Host\Master.Web.Host.csproj", "{2D3DF0F3-0A54-40DE-8E15-3CBF8A9D6372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Web.Api", "Master.Web\Master.Web.Api\Master.Web.Api.csproj", "{21678737-9409-43A5-8916-C182EEB5CDA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Web.Api", "Master.Web\Master.Web.Api\Master.Web.Api.csproj", "{21678737-9409-43A5-8916-C182EEB5CDA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76DF7C2F-0B4C-4219-8CAC-28C3C8611333}"
+	ProjectSection(SolutionItems) = preProject
+		Security.md = Security.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
