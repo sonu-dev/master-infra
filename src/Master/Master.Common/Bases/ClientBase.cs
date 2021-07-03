@@ -10,7 +10,7 @@ namespace Master.Common.Bases
         public ClientBase()
         {
             InitializeLogger();
-            _name = nameof(T);
+            _name = typeof(T).Name;
         }
 
         private void InitializeLogger()

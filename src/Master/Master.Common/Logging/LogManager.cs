@@ -10,16 +10,15 @@ namespace Master.Common.Logging
     {
         public static ILogger InitializeLogger()
         {
-            //Read Configuration from appSettings
+            //Read Configuration from logsettings
             var configuration = new ConfigurationBuilder()
-                  .AddJsonFile("appsettings.json")
+                  .AddJsonFile("logSettings.json")
                   .Build();
 
             Log.Logger = new LoggerConfiguration()
-              .ReadFrom.Configuration(configuration)
-              .MinimumLevel.Debug()
-              .WriteTo.Console()
-              .CreateLogger();            
+                .ReadFrom.Configuration(configuration)
+                .Enrich.FromLogContext()               
+                .CreateLogger();
             return Log.Logger;
         }
     }

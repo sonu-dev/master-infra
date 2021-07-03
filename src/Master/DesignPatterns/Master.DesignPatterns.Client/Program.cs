@@ -13,22 +13,10 @@ namespace Master.DesignPatterns.Client
         {
             /* Bavioral - TemplateMethod */
 
-            var clientType = typeof(IClient);
-            var clientTypes = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => clientType.IsAssignableFrom(p));
+            var templateMethodClient = new TemplateMethodClient();
+            await templateMethodClient.RunAsync();          
 
-            var clients = new List<IClient>();
-
-            foreach (var generator in clientTypes)
-            {
-                clients.Add(Activator.CreateInstance(generator) as IClient);
-            }
-
-            clients.ToList().ForEach(async c => await c.RunAsync());
-          
-
-            Console.WriteLine("Hello World!");
+            Console.ReadKey();
         }
     }
 }

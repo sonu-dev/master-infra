@@ -1,0 +1,15 @@
+﻿{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.File", "Serilog.Sinks.Console" ],
+    "MinimumLevel": "Debug",
+    "WriteTo": [     
+      { "Name": "Console" }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ],
+    "Properties": {
+      "Application": "Master",
+      "Environment": "Dev"
+    }
+  },
+  "AllowedHosts": "*"
+}
