@@ -13,9 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Common", "Master\Mas
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuartzScheduler", "QuartzScheduler", "{91D07EC2-AD77-4767-BFA4-BEDF1F683554}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.QuartzScheduler", "Master\QuartzScheduler\Master.QuartzScheduler\Master.QuartzScheduler.csproj", "{D547B254-1806-4449-960D-B1778ABA73F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.QuartzScheduler", "Master\QuartzScheduler\Master.QuartzScheduler\Master.QuartzScheduler.csproj", "{D547B254-1806-4449-960D-B1778ABA73F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.QuartzScheduler.Client", "Master\QuartzScheduler\Master.QuartzScheduler.Client\Master.QuartzScheduler.Client.csproj", "{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.QuartzScheduler.Client", "Master\QuartzScheduler\Master.QuartzScheduler.Client\Master.QuartzScheduler.Client.csproj", "{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignPatterns", "DesignPatterns", "{C2DB83AD-2933-45F5-8398-05BAEE5475F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.DesignPatterns", "Master\DesignPatterns\Master.DesignPatterns\Master.DesignPatterns.csproj", "{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.DesignPatterns.Client", "Master\DesignPatterns\Master.DesignPatterns.Client\Master.DesignPatterns.Client.csproj", "{80BE8687-B92E-4335-8A5A-504D3B348575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,14 @@ Global
 		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BE8687-B92E-4335-8A5A-504D3B348575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BE8687-B92E-4335-8A5A-504D3B348575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BE8687-B92E-4335-8A5A-504D3B348575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BE8687-B92E-4335-8A5A-504D3B348575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +66,8 @@ Global
 		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
 		{D547B254-1806-4449-960D-B1778ABA73F7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
 		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
+		{AFD39F93-071F-4ABF-98C5-26DCAB8067CD} = {C2DB83AD-2933-45F5-8398-05BAEE5475F9}
+		{80BE8687-B92E-4335-8A5A-504D3B348575} = {C2DB83AD-2933-45F5-8398-05BAEE5475F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7257EF69-09D7-4DCA-A8CA-0873FEFB5A19}
