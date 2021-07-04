@@ -24,8 +24,7 @@ namespace Master.Web.Host
              // Host to Kestral web server, that is default web server
              .ConfigureWebHostDefaults(webBuilder =>
              {
-                 webBuilder.UseStartup<Startup>()
-                          .UseUrls("http://localhost:4000");
+                 webBuilder.UseStartup<Startup>();                          
              });
         }
     }

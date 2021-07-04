@@ -1,11 +1,14 @@
+using Master.Web.Api.Extensions;
 using Master.Web.Api.Middlewares;
 using Master.Web.Api.Options;
+using Master.Web.Api.Providers.TokenProvider;
 using Master.Web.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Text;
 
 namespace Master.Web.Host
 {
@@ -29,6 +32,7 @@ namespace Master.Web.Host
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITokenProvider, TokenProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +43,8 @@ namespace Master.Web.Host
                 app.UseDeveloperExceptionPage();
             }
 
+            // Jwt Authentication
+            app.UseJwtAuthentication(); 
             app.UseRouting();
 
             // global cors policy
@@ -47,12 +53,12 @@ namespace Master.Web.Host
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            // custom jwt auth middleware
-            app.UseMiddleware<JwtMiddleware>();
+            // custom jwt auth middleware           
+            app.UseMiddleware<JwtMiddleware>();           
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers();               
             });
         }
     }
