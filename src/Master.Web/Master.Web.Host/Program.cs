@@ -12,17 +12,21 @@ namespace Master.Web.Host
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            GenericHost.CreateDefaultBuilder(args)
-            // Default Asp.Net Core Looging Provider
-            .ConfigureLogging(logging =>
-            {
-                logging.ClearProviders();
-                logging.AddConsole();
-            })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
+        private static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return GenericHost.CreateDefaultBuilder(args)
+             // Default Asp.Net Core Looging Provider
+             .ConfigureLogging(logging =>
+             {
+                 logging.ClearProviders();
+                 logging.AddConsole();
+             })
+             // Host to Kestral web server, that is default web server
+             .ConfigureWebHostDefaults(webBuilder =>
+             {
+                 webBuilder.UseStartup<Startup>()
+                          .UseUrls("http://localhost:4000");
+             });
+        }
     }
 }

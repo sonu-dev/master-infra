@@ -4,16 +4,17 @@ using Master.Web.Api.Services;
 using Master.Web.Host.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Master.Web.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ApiControllerBase<UsersController>
+    public class UserController : ApiControllerBase<UserController>
     {
         private IUserService _userService;
 
-        public UsersController(IUserService userService, ILogger<UsersController> logger): base(logger)
+        public UserController(IUserService userService, ILogger<UserController> logger): base(logger)
         {
             _userService = userService;
         }
@@ -22,13 +23,12 @@ namespace Master.Web.Api.Controllers
         public IActionResult Authenticate(AuthenticateRequest model)
         {
             var response = _userService.Authenticate(model);
-
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             return Ok(response);
         }
-
+        
         [Authorize]
         [HttpGet]
         public IActionResult GetAll()
