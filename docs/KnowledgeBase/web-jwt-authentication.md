@@ -1,6 +1,9 @@
 
  # JWT Authentication 
  
+ ### References
+ [https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-api#app-settings-development-json] 
+ 
 Token-based security is commonly used in today’s security architecture. There are several token-based security techniques. JWT is one of the more popular techniques. JWT token is used to identify authorized users.
 
 <b>What is the JWT WEB TOKEN? </b><br/>
