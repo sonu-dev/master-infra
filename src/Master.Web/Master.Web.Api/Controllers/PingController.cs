@@ -1,6 +1,6 @@
-﻿using Master.Web.Api.Common;
+﻿using Master.Common.Logging;
+using Master.Web.Api.Common;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -10,14 +10,14 @@ namespace Master.Web.Api.Controllers
     [Route("[controller]")]    
     public class PingController : ApiControllerBase<PingController>
     {
-        public PingController(ILogger<PingController> logger) : base(logger)
+        public PingController(ILog<PingController> log) : base(log)
         {
         }
 
         [HttpGet]
         public async Task<string> PingAsync()
         {
-            Log.LogDebug($"Called at {DateTime.Now}");
+            Log.Debug($"Called at {DateTime.Now}");
             return await Task.FromResult($"Ping at {DateTime.Now}");
         }
     }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>../../../Bin/QuartzScheduler</OutputPath>
+    <OutputPath>../../Bin/QuartzScheduler</OutputPath>   
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>../../../Bin/QuartzScheduler</OutputPath>
+    <OutputPath>../../Bin/QuartzScheduler</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Master.Common\Master.Common.csproj" />
     <ProjectReference Include="..\Master.QuartzScheduler\Master.QuartzScheduler.csproj" />
   </ItemGroup>
 

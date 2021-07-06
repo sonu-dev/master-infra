@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Master.Common.Logging
 {
-   public class LogManager
+    public class LogManager
     {
         public static ILogger InitializeLogger()
         {
@@ -15,11 +12,10 @@ namespace Master.Common.Logging
                   .AddJsonFile("logSettings.json")
                   .Build();
 
-            Log.Logger = new LoggerConfiguration()
+         return Serilog.Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
-                .Enrich.FromLogContext()               
+                .Enrich.FromLogContext()
                 .CreateLogger();
-            return Log.Logger;
         }
     }
 }

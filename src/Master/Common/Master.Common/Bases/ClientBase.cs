@@ -6,17 +6,11 @@ namespace Master.Common.Bases
     public abstract class ClientBase<T> : IClient
     {
         private string _name;
-        protected Serilog.ILogger Log;
-        public ClientBase()
+        protected ILog<T> Log;
+        public ClientBase(ILog<T> log)
         {
-            InitializeLogger();
+            Log = log;
             _name = typeof(T).Name;
-        }
-
-        private void InitializeLogger()
-        {
-            var logger = LogManager.InitializeLogger();
-            Log = logger;            
         }
 
         public async Task RunAsync()

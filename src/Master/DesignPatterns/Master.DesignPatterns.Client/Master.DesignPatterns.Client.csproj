@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>../../../Bin/DesignPatterns</OutputPath>
+    <OutputPath>../../Bin/DesignPatterns</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>../../../Bin/DesignPatterns</OutputPath>
+    <OutputPath>../../Bin/DesignPatterns</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

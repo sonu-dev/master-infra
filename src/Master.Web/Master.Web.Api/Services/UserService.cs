@@ -1,4 +1,6 @@
-﻿using Master.Web.Api.Models;
+﻿using Master.Common.Logging;
+using Master.Web.Api.Common;
+using Master.Web.Api.Models;
 using Master.Web.Api.Models.Requests;
 using Master.Web.Api.Models.Responses;
 using Master.Web.Api.Providers.TokenProvider;
@@ -7,13 +9,13 @@ using System.Linq;
 
 namespace Master.Web.Api.Services
 {
-    public class UserService : IUserService
+    public class UserService : ServiceBase<UserService>, IUserService
     {
         private ITokenProvider _tokenProvider;
         private const string userIdClaim = "id";
         private const string userEmailClaim = "email";
 
-        public UserService(ITokenProvider tokenProvider)
+        public UserService(ITokenProvider tokenProvider, ILog<UserService> log) : base(log)
         {
             _tokenProvider = tokenProvider;
         }

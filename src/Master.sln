@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.RabbitMq", "Master\R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.RabbitMq.Client", "Master\RabbitMq\Master.RabbitMq.Client\Master.RabbitMq.Client.csproj", "{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Common", "Master\Master.Common\Master.Common.csproj", "{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuartzScheduler", "QuartzScheduler", "{91D07EC2-AD77-4767-BFA4-BEDF1F683554}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.QuartzScheduler", "Master\QuartzScheduler\Master.QuartzScheduler\Master.QuartzScheduler.csproj", "{D547B254-1806-4449-960D-B1778ABA73F7}"
@@ -19,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.QuartzScheduler.Clie
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignPatterns", "DesignPatterns", "{C2DB83AD-2933-45F5-8398-05BAEE5475F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.DesignPatterns", "Master\DesignPatterns\Master.DesignPatterns\Master.DesignPatterns.csproj", "{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.DesignPatterns", "Master\DesignPatterns\Master.DesignPatterns\Master.DesignPatterns.csproj", "{AFD39F93-071F-4ABF-98C5-26DCAB8067CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.DesignPatterns.Client", "Master\DesignPatterns\Master.DesignPatterns.Client\Master.DesignPatterns.Client.csproj", "{80BE8687-B92E-4335-8A5A-504D3B348575}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.DesignPatterns.Client", "Master\DesignPatterns\Master.DesignPatterns.Client\Master.DesignPatterns.Client.csproj", "{80BE8687-B92E-4335-8A5A-504D3B348575}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5C7F00EE-6E0F-4C54-861A-AF9E8149B02D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Common", "Master\Common\Master.Common\Master.Common.csproj", "{C01EA5FA-E532-4422-A6F4-9751AB094A95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +39,6 @@ Global
 		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C91F6B0-F251-4E14-8BCC-8CF952ADB430}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +55,10 @@ Global
 		{80BE8687-B92E-4335-8A5A-504D3B348575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80BE8687-B92E-4335-8A5A-504D3B348575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80BE8687-B92E-4335-8A5A-504D3B348575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +70,7 @@ Global
 		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
 		{AFD39F93-071F-4ABF-98C5-26DCAB8067CD} = {C2DB83AD-2933-45F5-8398-05BAEE5475F9}
 		{80BE8687-B92E-4335-8A5A-504D3B348575} = {C2DB83AD-2933-45F5-8398-05BAEE5475F9}
+		{C01EA5FA-E532-4422-A6F4-9751AB094A95} = {5C7F00EE-6E0F-4C54-861A-AF9E8149B02D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7257EF69-09D7-4DCA-A8CA-0873FEFB5A19}

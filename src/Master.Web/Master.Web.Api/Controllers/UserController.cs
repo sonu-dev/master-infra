@@ -1,10 +1,9 @@
-﻿using Master.Web.Api.Common;
+﻿using Master.Common.Logging;
+using Master.Web.Api.Common;
 using Master.Web.Api.Models.Requests;
 using Master.Web.Api.Services;
 using Master.Web.Host.Filters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 
 namespace Master.Web.Api.Controllers
 {
@@ -14,7 +13,7 @@ namespace Master.Web.Api.Controllers
     {
         private IUserService _userService;
 
-        public UserController(IUserService userService, ILogger<UserController> logger): base(logger)
+        public UserController(IUserService userService, ILog<UserController> log): base(log)
         {
             _userService = userService;
         }

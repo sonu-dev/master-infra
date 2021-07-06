@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace Master.Web.Api.Middlewares
 {
+    /// <summary>
+    /// Validating JWT token and attach current user to HttpContext
+    /// </summary>
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;

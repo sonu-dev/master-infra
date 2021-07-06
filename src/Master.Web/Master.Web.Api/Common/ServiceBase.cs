@@ -1,12 +1,11 @@
 ﻿using Master.Common.Logging;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Master.Web.Api.Common
 {
-    public abstract class ApiControllerBase<T> : ControllerBase       
+    public abstract class ServiceBase<T>
     {
         protected ILog<T> Log { get; private set; }
-        public ApiControllerBase(ILog<T> log)
+        public ServiceBase(ILog<T> log)
         {
             Log = log;
         }

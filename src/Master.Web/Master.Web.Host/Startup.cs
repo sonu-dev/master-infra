@@ -1,3 +1,4 @@
+using Master.Common.Logging;
 using Master.Web.Api.Extensions;
 using Master.Web.Api.Middlewares;
 using Master.Web.Api.Options;
@@ -31,6 +32,7 @@ namespace Master.Web.Host
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // configure DI for application services
+            services.AddSingleton(typeof(ILog<>), typeof(Log<>));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenProvider, TokenProvider>();
         }
