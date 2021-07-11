@@ -7,9 +7,7 @@ namespace Master.QuartzScheduler.Client
     {
         static void Main(string[] args)
         {
-            var client = new Client();
-
-            Console.ReadLine();
+           
         }
     }
 }

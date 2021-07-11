@@ -12,8 +12,4 @@
     <OutputPath>../../Bin/QuartzScheduler</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Master.Common\Master.Common.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -5,17 +5,17 @@ namespace Master.Common.Logging
 {
     public class LogManager
     {
-        public static ILogger InitializeLogger()
+        public static ILogger LoadLogger()
         {
             //Read Configuration from logsettings
             var configuration = new ConfigurationBuilder()
                   .AddJsonFile("logSettings.json")
                   .Build();
 
-         return Serilog.Log.Logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(configuration)
-                .Enrich.FromLogContext()
-                .CreateLogger();
+            return new LoggerConfiguration()
+                   .ReadFrom.Configuration(configuration)
+                   .Enrich.FromLogContext()
+                   .CreateLogger();
         }
     }
 }

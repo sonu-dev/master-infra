@@ -2,12 +2,12 @@
 
 namespace Master.Common.Logging
 {
-    public abstract class Log<T> : ILog<T>
+    public class Log<T> : ILog<T>
     {
         private readonly ILogger _logger;
-        public Log()
+        public Log(ILogger logger)
         {
-            _logger = LogManager.InitializeLogger();
+            _logger = logger;
         }
        public void Info(string messageTemplate)
         {

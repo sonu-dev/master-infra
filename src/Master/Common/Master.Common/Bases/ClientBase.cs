@@ -1,25 +1,32 @@
 ﻿using Master.Common.Logging;
+using System;
 using System.Threading.Tasks;
 
 namespace Master.Common.Bases
 {
     public abstract class ClientBase<T> : IClient
     {
-        private string _name;
-        protected ILog<T> Log;
+        protected string Name;
+        protected ILog<T> Log;     
         public ClientBase(ILog<T> log)
         {
-            Log = log;
-            _name = typeof(T).Name;
+            Log = log;         
+            Name = typeof(T).Name;
+        }      
+
+        public Task RunAsync(IServiceProvider serviceProvider = null)
+        {           
+            if (!CanExecute())
+            {
+                return Task.CompletedTask;
+            }
+            Log.Debug($"{Name} start.");
+            ExecuteAsync(serviceProvider);
+            Log.Debug($"{Name} stop.");
+            return Task.CompletedTask;
         }
 
-        public async Task RunAsync()
-        {
-            Log.Debug($"{_name} start.");
-            await ExecuteAsync();
-            Log.Debug($"{_name} stop.");
-        }
-
-        public abstract Task ExecuteAsync();
+        public virtual bool CanExecute() => true;
+        public abstract Task ExecuteAsync(IServiceProvider serviceProvider = null);      
     }
 }
