@@ -1,0 +1,14 @@
+
+<form #loginForm="ngForm" (ngSubmit)="onLogin()">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" id="username" [(ngModel)]="user.username" 
+        placeholder="Enter Username" required/>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Possword</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="user.password" 
+        placeholder="Enter Password" required/> 
+    </div>
+    <input type="submit" value="Login" [disabled]="!loginForm.valid"/>
+</form>

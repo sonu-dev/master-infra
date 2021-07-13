@@ -5,7 +5,7 @@ import {FeatureDeatilsComponent} from './feature-details/feature-details.compone
 
 
 const routes: Routes = [
-    {path:'features', component: FeaturesComponent},
+    {path:'', component: FeaturesComponent},
     {path:'feature-details', component: FeatureDeatilsComponent}
 ];
 
