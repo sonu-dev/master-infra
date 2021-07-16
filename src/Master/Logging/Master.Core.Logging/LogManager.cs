@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace Master.Common.Logging
+namespace Master.Core.Logging
 {
     public class LogManager
     {

@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Master.Common\Master.Common.csproj" />
-    <ProjectReference Include="..\Master.QuartzScheduler\Master.QuartzScheduler.csproj" />
+    <ProjectReference Include="..\..\Common\Master.Common\Master.Core.Common.csproj" />
+    <ProjectReference Include="..\Master.QuartzScheduler\Master.Core.QuartzScheduler.csproj" />
   </ItemGroup>
 
 </Project>

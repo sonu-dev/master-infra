@@ -1,4 +1,4 @@
-﻿namespace Master.Common.Logging
+﻿namespace Master.Core.Logging
 {
     public interface ILog<T> 
     {

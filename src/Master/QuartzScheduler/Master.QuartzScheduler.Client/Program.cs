@@ -1,7 +1,4 @@
-﻿using Master.Common.Logging;
-using System;
-
-namespace Master.QuartzScheduler.Client
+﻿namespace Master.QuartzScheduler.Client
 {
     class Program
     {

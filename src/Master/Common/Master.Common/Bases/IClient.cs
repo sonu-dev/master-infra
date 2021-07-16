@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Master.Common.Bases
+namespace Master.Core.Common
 {
     public interface IClient
     {
-        Task RunAsync(IServiceProvider serviceProvider = null);
+        Task RunAsync();
     }
 }

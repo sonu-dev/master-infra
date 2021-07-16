@@ -1,11 +1,11 @@
-﻿using Master.Common.Logging;
+﻿using Master.Core.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System.IO;
 
-namespace Master.Common.Host
+namespace Master.Core.Host
 {
     public abstract class GenericHostBase 
     {

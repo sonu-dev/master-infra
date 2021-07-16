@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace Master.Common.Logging
+namespace Master.Core.Logging
 {
     public class Log<T> : ILog<T>
     {

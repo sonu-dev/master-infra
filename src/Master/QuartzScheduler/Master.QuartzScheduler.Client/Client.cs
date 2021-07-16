@@ -1,6 +1,5 @@
-﻿using Master.Common.Bases;
-using Master.Common.Logging;
-using System;
+﻿using Master.Core.Common;
+using Master.Core.Logging;
 using System.Threading.Tasks;
 
 namespace Master.QuartzScheduler.Client
@@ -12,7 +11,7 @@ namespace Master.QuartzScheduler.Client
             Log.Debug("Hello World !");
         }
 
-        public override Task ExecuteAsync(IServiceProvider serviceProvider)
+        public override Task ExecuteAsync()
         {
             Log.Debug("Executing Quarta Jobs");
             return Task.CompletedTask;

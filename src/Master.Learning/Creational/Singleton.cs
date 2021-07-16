@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Master.DesignPatterns.Creational
+namespace Master.Learning.DesignPatterns.Creational
 {
     public class Singleton
     {

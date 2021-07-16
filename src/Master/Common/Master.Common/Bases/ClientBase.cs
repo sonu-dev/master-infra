@@ -1,8 +1,7 @@
-﻿using Master.Common.Logging;
-using System;
+﻿using Master.Core.Logging;
 using System.Threading.Tasks;
 
-namespace Master.Common.Bases
+namespace Master.Core.Common
 {
     public abstract class ClientBase<T> : IClient
     {
@@ -14,19 +13,19 @@ namespace Master.Common.Bases
             Name = typeof(T).Name;
         }      
 
-        public Task RunAsync(IServiceProvider serviceProvider = null)
+        public Task RunAsync()
         {           
             if (!CanExecute())
             {
                 return Task.CompletedTask;
             }
             Log.Debug($"{Name} start.");
-            ExecuteAsync(serviceProvider);
+            ExecuteAsync();
             Log.Debug($"{Name} stop.");
             return Task.CompletedTask;
         }
 
         public virtual bool CanExecute() => true;
-        public abstract Task ExecuteAsync(IServiceProvider serviceProvider = null);      
+        public abstract Task ExecuteAsync();      
     }
 }
