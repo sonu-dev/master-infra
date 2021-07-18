@@ -7,7 +7,7 @@ namespace Master.Core.Common
     {
         private static IServiceProvider _serviceProvider;
 
-        public static void SetupContainer(IServiceProvider serviceProvider)
+        public static void Setup(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }

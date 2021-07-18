@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMq", "RabbitMq", "{70004E5B-1C74-463A-8A4A-291F8CE400E1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.RabbitMq", "Master\RabbitMq\Master.RabbitMq\Master.Core.RabbitMq.csproj", "{E01E1F5B-8621-426C-B207-A0AA608CB9B2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master..Core.RabbitMqClient", "Master\RabbitMq\Master.RabbitMq.Client\Master..Core.RabbitMqClient.csproj", "{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MassTransit", "MassTransit", "{70004E5B-1C74-463A-8A4A-291F8CE400E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuartzScheduler", "QuartzScheduler", "{91D07EC2-AD77-4767-BFA4-BEDF1F683554}"
 EndProject
@@ -27,20 +23,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.Host", "Master\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.Logging", "Master\Logging\Master.Core.Logging\Master.Core.Logging.csproj", "{D18FB5A1-5981-42D1-BA85-EF1B3BCFBC61}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.MassTransit", "Master\MassTransit\Master.Core.MassTransit\Master.Core.MassTransit.csproj", "{2DAB6161-F150-4A06-8720-9EF52353ED1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Core.MassTransit.Testing", "Master\MassTransit\Master.Core.MassTransit.Testing\Master.Core.MassTransit.Testing.csproj", "{D5E00765-B96B-4A14-BA79-74BD49269479}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E01E1F5B-8621-426C-B207-A0AA608CB9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E01E1F5B-8621-426C-B207-A0AA608CB9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E01E1F5B-8621-426C-B207-A0AA608CB9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E01E1F5B-8621-426C-B207-A0AA608CB9B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,18 +53,26 @@ Global
 		{D18FB5A1-5981-42D1-BA85-EF1B3BCFBC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D18FB5A1-5981-42D1-BA85-EF1B3BCFBC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D18FB5A1-5981-42D1-BA85-EF1B3BCFBC61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DAB6161-F150-4A06-8720-9EF52353ED1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DAB6161-F150-4A06-8720-9EF52353ED1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DAB6161-F150-4A06-8720-9EF52353ED1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DAB6161-F150-4A06-8720-9EF52353ED1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5E00765-B96B-4A14-BA79-74BD49269479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E00765-B96B-4A14-BA79-74BD49269479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E00765-B96B-4A14-BA79-74BD49269479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E00765-B96B-4A14-BA79-74BD49269479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E01E1F5B-8621-426C-B207-A0AA608CB9B2} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
-		{C0BC5080-DBE4-41ED-8CA9-20FF07AC14C0} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
 		{D547B254-1806-4449-960D-B1778ABA73F7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
 		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
 		{C01EA5FA-E532-4422-A6F4-9751AB094A95} = {5C7F00EE-6E0F-4C54-861A-AF9E8149B02D}
 		{C33CE407-843F-4C9E-9CE7-D38FB8899973} = {D491D135-7332-4537-8D0A-70DDDF6DA6E0}
 		{D18FB5A1-5981-42D1-BA85-EF1B3BCFBC61} = {0026EC12-B95A-4979-A26A-B770080CA43C}
+		{2DAB6161-F150-4A06-8720-9EF52353ED1C} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
+		{D5E00765-B96B-4A14-BA79-74BD49269479} = {70004E5B-1C74-463A-8A4A-291F8CE400E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7257EF69-09D7-4DCA-A8CA-0873FEFB5A19}

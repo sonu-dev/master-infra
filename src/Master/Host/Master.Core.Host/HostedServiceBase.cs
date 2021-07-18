@@ -12,6 +12,7 @@ namespace Master.Core.Host
         private string _serviceName;
         private ILog<THostedService> _log;
         private IServiceProvider _serviceProvider;
+
         public HostedServiceBase(ILog<THostedService> log, IServiceProvider serviceProvider)
         {
             _log = log;
@@ -22,7 +23,7 @@ namespace Master.Core.Host
         {
             _log.Debug($"{_serviceName} start");
             _log.Debug("Setup Di container");
-            DiContainer.SetupContainer(_serviceProvider);
+            DiContainer.Setup(_serviceProvider);
             return Task.CompletedTask;
         }
 
