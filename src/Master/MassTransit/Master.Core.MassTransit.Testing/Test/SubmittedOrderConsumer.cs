@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Master.Core.MassTransit.Testing
+namespace Master.Core.MassTransit.Testing.Tests
 {
     public class SubmittedOrderConsumer : IConsumer<SubmittedOrderMessage>
     {

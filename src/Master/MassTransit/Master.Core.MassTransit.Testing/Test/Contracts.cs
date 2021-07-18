@@ -1,4 +1,4 @@
-﻿namespace Master.Core.MassTransit.Testing
+﻿namespace Master.Core.MassTransit.Testing.Tests
 {
     public interface CreateOrderMessage
     {

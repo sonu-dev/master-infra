@@ -1,5 +1,6 @@
 ﻿using MassTransit.Testing;
 using Master.Core.Logging;
+using Master.Core.MassTransit.Testing.Tests;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 
@@ -7,7 +8,7 @@ namespace Master.Core.MassTransit.Testing.Bases
 {
     public abstract class MassTransitTestBase
     {
-        protected InMemoryTestHarness BusMockService;
+        protected readonly InMemoryTestHarness BusMockService;
         public MassTransitTestBase()
         {
             var provider = new ServiceCollection()
