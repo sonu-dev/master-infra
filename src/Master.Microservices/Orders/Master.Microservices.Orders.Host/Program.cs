@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using GenericHost = Microsoft.Extensions.Hosting.Host;
+using Master.Microservices.Orders.Host;
 
 namespace Master.Microservices.Order.Host
 {
@@ -8,14 +6,8 @@ namespace Master.Microservices.Order.Host
     {
         public static void Main(string[] args)
         {
-             CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            GenericHost.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            var host = new OrdersServiceHost();
+            host.Run(args);
+        }            
     }
 }
