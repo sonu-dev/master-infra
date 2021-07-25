@@ -3,6 +3,7 @@ using Master.Web.Api.Extensions;
 using Master.Web.Api.Middlewares;
 using Master.Web.Api.Options;
 using Master.Web.Api.Providers.TokenProvider;
+using Master.Web.Api.Repositories;
 using Master.Web.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,7 @@ namespace Master.Web.Host
 
             // configure DI for application services
             services.AddSingleton(typeof(ILog<>), typeof(Log<>));
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ITokenProvider, TokenProvider>();
         }
 

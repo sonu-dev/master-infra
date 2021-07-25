@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Master.Core.DataAccess">
+      <HintPath>..\..\..\Master\Bin\DataAccess\netcoreapp3.1\Master.Core.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Master.Core.Logging">
+      <HintPath>..\..\..\Master\Bin\Logging\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

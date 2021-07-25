@@ -1,5 +1,5 @@
 ﻿using Master.Core.Logging;
-using Master.Web.Api.Common;
+using Master.Microservices.Common.Bases;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

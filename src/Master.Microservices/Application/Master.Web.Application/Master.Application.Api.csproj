@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\Bin\WebApi</OutputPath>
+    <OutputPath>..\..\Bin\Application</OutputPath>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\WebApi</OutputPath>
+    <OutputPath>..\..\Bin\Application</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,8 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Master.Microservices.Common\Master.Microservices.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Master.Core.Common">
       <HintPath>..\..\..\Master\Bin\Common\netcoreapp3.1\Master.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Master.Core.DataAccess">
+      <HintPath>..\..\..\Master\Bin\DataAccess\netcoreapp3.1\Master.Core.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Master.Core.Logging">
       <HintPath>..\..\..\Master\Bin\Common\netcoreapp3.1\Master.Core.Logging.dll</HintPath>

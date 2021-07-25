@@ -1,4 +1,5 @@
 ﻿using Master.Web.Api.Options;
+using Master.Web.Api.Repositories;
 using Master.Web.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -25,7 +26,7 @@ namespace Master.Web.Api.Middlewares
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IUserService userService)
+        public async Task Invoke(HttpContext context, IUserRepository userService)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             if (token != null)
@@ -35,7 +36,7 @@ namespace Master.Web.Api.Middlewares
             await _next(context);
         }
 
-        private void AttachUserToContext(HttpContext context, IUserService userService, string token)
+        private void AttachUserToContext(HttpContext context, IUserRepository userService, string token)
         {
             try
             {
