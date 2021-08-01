@@ -27,12 +27,11 @@ namespace Master.Microservices.Orders.Api
         public async Task<bool> PostAsync([FromBody] CreateOrderRequest request)
         {
             var newOrder = new Order
-            {
-                Id = Guid.NewGuid(),
+            {               
                 Description = request.Order.Description,
                 Amount = request.Order.Amount,
                 Status = (int)OrderStatus.UnPaid,
-                CreationTime = DateTime.Now,
+                CreatedTime = DateTime.Now,
                 CreatedBy = request.UserId
             };
             return await _orderRepository.CreateOrdersAsync(new List<Order> { newOrder });
@@ -45,11 +44,10 @@ namespace Master.Microservices.Orders.Api
             var ordersVm = orders.Select(o =>
                 new OrderViewModel
                 {
-                    Id = o.Id,
                     Description = o.Description,
                     Amount = o.Amount,
                     Status = o.Status,
-                    CreationTime = o.CreationTime,
+                    CreationTime = o.CreatedTime,
                     CreatedBy = o.CreatedBy
                 }
             ).ToList();

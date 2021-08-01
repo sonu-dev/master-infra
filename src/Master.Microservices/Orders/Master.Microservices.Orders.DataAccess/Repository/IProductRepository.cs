@@ -1,13 +1,12 @@
 ﻿using Master.Microservices.Orders.DataAccess.Models;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Master.Microservices.Orders.DataAccess.Repository
 {
-    public interface IOrderRepository  
+    public interface IProductRepository
     {
-        Task<bool> CreateOrdersAsync(List<Order> orders);
-        Task<List<Order>> GetOrdersAsync(List<int> orderIds);
+        Task AddProductsAsync(List<Product> products);
+        List<Product> GetProductsAsync();
     }
 }

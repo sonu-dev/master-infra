@@ -22,7 +22,7 @@ namespace Master.Microservices.Orders.DataAccess.Repository
             return true;
         }
 
-        public async Task<List<Order>> GetOrdersAsync(List<Guid> orderIds)
+        public async Task<List<Order>> GetOrdersAsync(List<int> orderIds)
         {
             if(orderIds == null)
             {
