@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Master.Microservices.Common.Bases;
 
 namespace Master.Microservices.Orders.DataAccess.Models
 {
-    public class ProductCategory
+    public class ProductCategory : EntityBase
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsEnabled { get; set; }

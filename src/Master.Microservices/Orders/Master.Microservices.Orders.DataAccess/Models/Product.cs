@@ -1,14 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Master.Microservices.Common.Bases;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Master.Microservices.Orders.DataAccess.Models
 {
-    public class Product
+    public class Product : EntityBase
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public string Name { get; set; }

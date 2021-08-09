@@ -19,12 +19,12 @@
     },
     "Master.Microservices.Orders.Host": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "order",
+      "launchBrowser": false,
+      "launchUrl": "product",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://localhost:5000" 
     }
   }
 }

@@ -17,11 +17,9 @@ namespace Master.Microservices.Order.Host
         #region ApplicationStartupBase Members
         public override void ConfigureServices(IServiceCollection services)
         {
-            base.ConfigureServices(services);
+            base.ConfigureServices(services);           
             ConfigureEfCore(services);
-
-            services.AddTransient<IOrderRepository, OrderRepository>();
-            services.AddTransient<IProductRepository, ProductRepository>();
+            RegisterRepositories(services);
         }
 
         public override void AddHostedService(IServiceCollection services)
@@ -34,9 +32,14 @@ namespace Master.Microservices.Order.Host
         #region Private Methods
         private void ConfigureEfCore(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("DbConnectionString");
-            services.AddDbContext<OrdersDataContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Master.Microservices.Orders.DataAccess")));
-          
+            services.AddDbContext<OrdersDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
+                b => b.MigrationsAssembly("Master.Microservices.Orders.DataAccess")));          
+        }
+
+        private void RegisterRepositories(IServiceCollection services)
+        {
+            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
         }
         #endregion
     }

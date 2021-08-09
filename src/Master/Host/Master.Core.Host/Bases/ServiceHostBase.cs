@@ -36,12 +36,13 @@ namespace Master.Core.Host.Bases
 
         private IHostBuilder CreateHostBuilder(string[] args)
         {
-            return GenericHost.CreateDefaultBuilder(args)
-               .UseSerilog()
+            return GenericHost.CreateDefaultBuilder(args)              
                .ConfigureWebHostDefaults(webHostBuilder =>
                {
                    ConfigureWebHost(webHostBuilder);
-               });
+               })
+               .UseSerilog((hostingContext, loggerConfiguration) =>
+            loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration)); //Uses Serilog instead of default .NET Logger
         }
 
         public abstract string ServiceName { get; }

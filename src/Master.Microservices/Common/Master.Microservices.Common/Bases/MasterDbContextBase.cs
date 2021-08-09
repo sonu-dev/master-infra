@@ -6,8 +6,7 @@ namespace Master.Microservices.Common.Bases
     {
         public MasterDbContextBase() { }
         public MasterDbContextBase(DbContextOptions options) : base(options)
-        {
-            Database.EnsureCreated();
+        {           
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

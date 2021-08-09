@@ -1,4 +1,5 @@
-﻿using Master.Core.Logging;
+﻿using Master.Application.Api.Models;
+using Master.Core.Logging;
 using Master.Microservices.Common.Bases;
 using Master.Web.Api.Models;
 using Master.Web.Api.Models.Requests;
@@ -10,13 +11,13 @@ using System.Linq;
 
 namespace Master.Web.Api.Services
 {
-    public class UserRepository : RepositoryBase<UserRepository>, IUserRepository
+    public class UserRepository : RepositoryBase<UserRepository, UsersDataContext>, IUserRepository
     {
         private ITokenProvider _tokenProvider;
         private const string userIdClaim = "id";
         private const string userEmailClaim = "email";
 
-        public UserRepository(ITokenProvider tokenProvider, ILog<UserRepository> log) : base(log) 
+        public UserRepository(ITokenProvider tokenProvider, ILog<UserRepository> log, UsersDataContext usersDataContext) : base(log, usersDataContext) 
         {
             _tokenProvider = tokenProvider;
         }

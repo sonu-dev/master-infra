@@ -2,12 +2,14 @@
 
 namespace Master.Microservices.Common.Bases
 {
-    public abstract class RepositoryBase<T>
-    {
-        protected ILog<T> Log;       
-        public RepositoryBase(ILog<T> log)
+    public abstract class RepositoryBase<TRepository, TDataContext>       
+    {  
+        protected readonly ILog<TRepository> Log;
+        protected readonly TDataContext DataContext;
+        public RepositoryBase(ILog<TRepository> log, TDataContext dataContext)
         {
-            Log = log;          
-        }
+            Log = log;
+            DataContext = dataContext;
+        }        
     }
 }

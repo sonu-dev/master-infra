@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using Master.Microservices.Common.Bases;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Master.Microservices.Orders.DataAccess.Models
 {
-    public class Order
+    public class Order : EntityBase 
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }       
-
         [ForeignKey("Cart")]
         public int CartId { get; set; }
         public string Description { get; set; }

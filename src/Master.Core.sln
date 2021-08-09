@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuartzScheduler", "QuartzSc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.QuartzScheduler", "Master\QuartzScheduler\Master.QuartzScheduler\Master.Core.QuartzScheduler.csproj", "{D547B254-1806-4449-960D-B1778ABA73F7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.QuartzSchedulerClient", "Master\QuartzScheduler\Master.QuartzScheduler.Client\Master.Core.QuartzSchedulerClient.csproj", "{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5C7F00EE-6E0F-4C54-861A-AF9E8149B02D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.Common", "Master\Common\Master.Common\Master.Core.Common.csproj", "{C01EA5FA-E532-4422-A6F4-9751AB094A95}"
@@ -29,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.MassTransit.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{93FC0BA9-77A1-4527-9BC8-D3C29BA59C66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Core.DataAccess", "Master\DataAccess\Master.Core.DataAccess\Master.Core.DataAccess.csproj", "{BCD11D13-0CD6-4140-8551-D92790D7D33B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Core.DataAccess", "Master\DataAccess\Master.Core.DataAccess\Master.Core.DataAccess.csproj", "{BCD11D13-0CD6-4140-8551-D92790D7D33B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +39,6 @@ Global
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D547B254-1806-4449-960D-B1778ABA73F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C01EA5FA-E532-4422-A6F4-9751AB094A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,7 +69,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D547B254-1806-4449-960D-B1778ABA73F7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
-		{9243AAF2-3531-49D7-B7BA-0E548F9D69A7} = {91D07EC2-AD77-4767-BFA4-BEDF1F683554}
 		{C01EA5FA-E532-4422-A6F4-9751AB094A95} = {5C7F00EE-6E0F-4C54-861A-AF9E8149B02D}
 		{C33CE407-843F-4C9E-9CE7-D38FB8899973} = {D491D135-7332-4537-8D0A-70DDDF6DA6E0}
 		{D18FB5A1-5981-42D1-BA85-EF1B3BCFBC61} = {0026EC12-B95A-4979-A26A-B770080CA43C}

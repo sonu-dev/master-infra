@@ -19,6 +19,7 @@ namespace Master.Microservices.Orders.DataAccess.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Insert Initial data
             modelBuilder.Entity<ProductCategory>().HasData(TestDataHelper.GetProductCategories());
             modelBuilder.Entity<Product>().HasData(TestDataHelper.GetProducts());
         }
