@@ -8,8 +8,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
   {
-    path:'features',  
-    loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule),
+    path:'products',  
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
     canActivate: [AuthGuardService]
   },  
   // otherwise redirect to home

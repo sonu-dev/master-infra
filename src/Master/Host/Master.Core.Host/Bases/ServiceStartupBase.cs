@@ -39,6 +39,10 @@ namespace Master.Core.Host.Bases
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
             app.UseSerilogRequestLogging();
             app.UseRouting();
             app.UseAuthorization();

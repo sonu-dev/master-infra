@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { ProductsRoutingModule } from './products.routing.module';
 import { ProductsComponent } from './products.component';
+import { ProductsService } from './products.service';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,9 @@ import { ProductsComponent } from './products.component';
   imports: [   
     ProductsRoutingModule
   ],
-  providers: [],
+  providers: [
+    ProductsService
+  ],
   bootstrap: [ProductsComponent]
 })
-export class FeaturesModule { }
+export class ProductsModule { }
