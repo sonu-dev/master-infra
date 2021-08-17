@@ -23,11 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Common
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{0906E812-02B9-4CE3-BD09-BD409CC2F551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Microservices.Payments", "Master.Microservices\Payments\Master.Microservices.Payments\Master.Microservices.Payments.csproj", "{270AF340-991D-4DCD-80C8-31B7C6F091BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Payments", "Master.Microservices\Payments\Master.Microservices.Payments\Master.Microservices.Payments.csproj", "{270AF340-991D-4DCD-80C8-31B7C6F091BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Microservices.Payments.Host", "Master.Microservices\Payments\Master.Microservices.Payments.Host\Master.Microservices.Payments.Host.csproj", "{61288BD8-B147-4316-9A78-91BA207E5C9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Payments.Host", "Master.Microservices\Payments\Master.Microservices.Payments.Host\Master.Microservices.Payments.Host.csproj", "{61288BD8-B147-4316-9A78-91BA207E5C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Microservices.Payments.DataAccess", "Master.Microservices\Payments\Master.Microservices.Payments.DataAccess\Master.Microservices.Payments.DataAccess.csproj", "{90CCD5C2-CE90-4A50-8409-46730E7CF04E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Payments.DataAccess", "Master.Microservices\Payments\Master.Microservices.Payments.DataAccess\Master.Microservices.Payments.DataAccess.csproj", "{90CCD5C2-CE90-4A50-8409-46730E7CF04E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,7 +20,7 @@ namespace Master.Microservices.Orders.Api
         }
 
         [HttpGet]
-        public async Task<IList<ProductCategoryViewModel>> GetAllAsync()
+        public async Task<IList<ProductCategoryViewModel>> GetProductCategoriesAsync()
         {
            var productCategories = await _productCategoryRepository.GetAllAsync();
            return productCategories.Select(cat => new ProductCategoryViewModel() { Id = cat.Id, Name = cat.Name, Description = cat.Description }).ToList();
