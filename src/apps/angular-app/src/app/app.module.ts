@@ -13,6 +13,7 @@ import { AuthenticationService } from './shared/services/authentication.service'
 import { UserService } from './shared/services/user.service';
 import { FakeBackendProvider } from './shared/interceptors/fake.backend.interceptor';
 import { JwtTokenProvider } from './shared/interceptors/jwt.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { JwtTokenProvider } from './shared/interceptors/jwt.interceptor';
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuardService,

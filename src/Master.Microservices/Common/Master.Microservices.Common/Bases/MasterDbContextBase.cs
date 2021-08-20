@@ -13,7 +13,7 @@ namespace Master.Microservices.Common.Bases
             if (!optionsBuilder.IsConfigured) // For Migration
             {
                 optionsBuilder.UseSqlServer(
-                    @"server=(local); database=MasterStore;user Id=admin;password=Welcome1;");
+                    @"server=AARYA\SQLEXPRESS;database=MasterStore;user Id=sonu;password=welcome1;");
             }
         }
     }
