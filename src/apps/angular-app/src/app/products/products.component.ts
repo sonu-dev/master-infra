@@ -20,8 +20,7 @@ export class ProductsComponent implements OnInit {
   }
 
   loadProducts() {
-   this.productsService.GetProductsCategories().subscribe(products => {    
-     this.productsCategories = [];
+   this.productsService.GetProductsCategories().subscribe(products => { 
      this.productsCategories = products;
    }, (error) => console.log(error)
    );

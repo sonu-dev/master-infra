@@ -5,7 +5,7 @@ namespace Master.Microservices.Common.Bases
     public class MasterDbContextBase : DbContext
     {
         public MasterDbContextBase() { }
-        public MasterDbContextBase(DbContextOptions options) : base(options)
+        public MasterDbContextBase(DbContextOptions options) : base(options) 
         {           
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

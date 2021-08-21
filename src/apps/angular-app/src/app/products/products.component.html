@@ -1,12 +1,9 @@
-<h1> Product Categories </h1>
+<h4> Product Categories </h4>
 
-<ul> 
-    <li *ngFor="let productCat of productsCategories" (click)="onSelect(productCat)">
-        <a [title]="productCat.description" href="#"> {{ productCat.name }}</a>
+<ul class="mt-5"> 
+    <li *ngFor="let pCat of productsCategories">
+        <a [title]="pCat.description" 
+           routerLink="/products/product-details/{{pCat.id}}"> {{ pCat.name }}
+        </a>
     </li>
-</ul>
-
-<ul> 
-    <li><a routerLink="/features/feature-details">JWT Authentication</a></li>
-    <li><a routerLink="/features/feature-details">Identity Integration</a></li>
 </ul>
