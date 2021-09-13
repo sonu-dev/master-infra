@@ -7,7 +7,7 @@ import { ProductsService } from './products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit { 
  public title = 'Products Categories';
 
   public productsCategories: ProductCategory[];
