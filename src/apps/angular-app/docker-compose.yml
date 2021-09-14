@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
 
-  angular-frontend:
-    container_name: master-app
+  angular-service:
+    container_name: sonu-master-angular-app
     build:
       context: .
       dockerfile: Dockerfile
