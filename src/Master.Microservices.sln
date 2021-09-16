@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{F9DE06EF-24A1-4948-A626-D68A3C12A479}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{F9DE06EF-24A1-4948-A626-D68A3C12A479}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{0468115A-C943-47D1-879C-81F851AC81C6}"
 EndProject
@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Application.Api", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Application.Host", "Master.Microservices\Application\Master.Web.Application.Host\Master.Application.Host.csproj", "{40FC71BD-7C40-4635-B716-2F2B4AE79F6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders", "Master.Microservices\Orders\Master.Microservices.Orders\Master.Microservices.Orders.csproj", "{25D0DD23-10E4-45BA-ACB0-D0577CFB6D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Catalog", "Master.Microservices\Orders\Master.Microservices.Orders\Master.Microservices.Catalog.csproj", "{25D0DD23-10E4-45BA-ACB0-D0577CFB6D31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders.DataAccess", "Master.Microservices\Orders\Master.Microservices.Orders.DataAccess\Master.Microservices.Orders.DataAccess.csproj", "{156FA966-6A5F-475A-B8EB-DC37608AB3F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Catalog.DataAccess", "Master.Microservices\Orders\Master.Microservices.Orders.DataAccess\Master.Microservices.Catalog.DataAccess.csproj", "{156FA966-6A5F-475A-B8EB-DC37608AB3F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders.Host", "Master.Microservices\Orders\Master.Microservices.Orders.Host\Master.Microservices.Orders.Host.csproj", "{AD7D0CDC-1C62-4B4B-AB6C-439A27441321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Catalog.Host", "Master.Microservices\Orders\Master.Microservices.Orders.Host\Master.Microservices.Catalog.Host.csproj", "{AD7D0CDC-1C62-4B4B-AB6C-439A27441321}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A9945398-CB81-4561-AF77-5C210A43BF91}"
 EndProject

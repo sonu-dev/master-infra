@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Master.Microservices.Orders.DataAccess.Models
+namespace Master.Microservices.Catalog.DataAccess.Models
 {
     public class Order : EntityBase 
     {

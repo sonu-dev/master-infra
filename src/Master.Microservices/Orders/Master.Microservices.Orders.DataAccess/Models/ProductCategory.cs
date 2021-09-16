@@ -1,6 +1,6 @@
 ﻿using Master.Microservices.Common.Bases;
 
-namespace Master.Microservices.Orders.DataAccess.Models
+namespace Master.Microservices.Catalog.DataAccess.Models
 {
     public class ProductCategory : EntityBase
     {

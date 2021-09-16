@@ -1,13 +1,13 @@
-﻿using Master.Microservices.Common.Bases;
-using Master.Microservices.Orders.DataAccess.TestData;
+﻿using Master.Microservices.Catalog.DataAccess.TestData;
+using Master.Microservices.Common.Bases;
 using Microsoft.EntityFrameworkCore;
 
-namespace Master.Microservices.Orders.DataAccess.Models
+namespace Master.Microservices.Catalog.DataAccess.Models
 {
-    public class OrdersDataContext : MasterDbContextBase
+    public class CatalogDataContext : MasterDbContextBase
     {
-        public OrdersDataContext() { }
-        public OrdersDataContext(DbContextOptions<OrdersDataContext> options)
+        public CatalogDataContext() { }
+        public CatalogDataContext(DbContextOptions<CatalogDataContext> options)
             : base(options)
         {
         }

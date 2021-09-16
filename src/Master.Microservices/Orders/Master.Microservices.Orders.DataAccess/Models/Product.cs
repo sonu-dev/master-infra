@@ -1,7 +1,7 @@
 ﻿using Master.Microservices.Common.Bases;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Master.Microservices.Orders.DataAccess.Models
+namespace Master.Microservices.Catalog.DataAccess.Models
 {
     public class Product : EntityBase
     {

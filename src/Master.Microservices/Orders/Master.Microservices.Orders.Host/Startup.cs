@@ -1,12 +1,15 @@
 using Master.Core.Host.Bases;
-using Master.Microservices.Orders.DataAccess.Models;
-using Master.Microservices.Orders.DataAccess.Repository;
-using Master.Microservices.Orders.Host.HostedServices;
+using Master.Microservices.Catalog.DataAccess.Models;
+using Master.Microservices.Catalog.DataAccess.Repository;
+using Master.Microservices.Catalog.DataAccess.Services;
+using Master.Microservices.Catalog.Host.HostedServices;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
-namespace Master.Microservices.Order.Host
+namespace Master.Microservices.Catalog.Host
 {
     public class Startup : ServiceStartupBase
     {
@@ -19,12 +22,13 @@ namespace Master.Microservices.Order.Host
         {
             base.ConfigureServices(services);           
             ConfigureEfCore(services);
-            RegisterRepositories(services);
+            RegisterServices(services);
+            services.AddMediatR(Assembly.GetExecutingAssembly()); // It will register all CQRS query and command handlers
         }
 
         public override void AddHostedService(IServiceCollection services)
         {
-            services.AddHostedService<OrdersHostedService>();
+            services.AddHostedService<CatalogHostedService>();
         }
 
         #endregion
@@ -32,14 +36,13 @@ namespace Master.Microservices.Order.Host
         #region Private Methods
         private void ConfigureEfCore(IServiceCollection services)
         {
-            services.AddDbContext<OrdersDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
-                b => b.MigrationsAssembly("Master.Microservices.Orders.DataAccess")));          
+            services.AddDbContext<CatalogDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
+                b => b.MigrationsAssembly("Master.Microservices.Catalog.DataAccess")));          
         }
 
-        private void RegisterRepositories(IServiceCollection services)
+        private void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICatalogService, CatalogService>();          
         }
         #endregion
     }

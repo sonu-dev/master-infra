@@ -4,11 +4,11 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Master.Microservices.Orders.Host.HostedServices
+namespace Master.Microservices.Catalog.Host.HostedServices
 {
-    public class OrdersHostedService : HostedServiceBase<OrdersHostedService>
+    public class CatalogHostedService : HostedServiceBase<CatalogHostedService>
     {
-        public OrdersHostedService(ILog<OrdersHostedService> log, IServiceProvider serviceProvider): base(log, serviceProvider)
+        public CatalogHostedService(ILog<CatalogHostedService> log, IServiceProvider serviceProvider): base(log, serviceProvider)
         {
         }
 

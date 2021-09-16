@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Master.Web.Api.Services
 {
-    public class UserRepository : RepositoryBase<UserRepository, UsersDataContext>, IUserRepository
+    public class UserRepository : ServiceBase<UserRepository, UsersDataContext>, IUserRepository
     {
         private ITokenProvider _tokenProvider;
         private const string userIdClaim = "id";

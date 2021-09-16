@@ -1,4 +1,4 @@
-﻿namespace Master.Microservices.Orders.ViewModels.Request
+﻿namespace Master.Microservices.Common.Bases
 {
     public abstract class RequestBase
     {

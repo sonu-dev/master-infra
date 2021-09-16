@@ -13,23 +13,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Master.Microservices.Common\Master.Microservices.Common.csproj" />
+    <ProjectReference Include="..\Master.Microservices.Orders.DataAccess\Master.Microservices.Catalog.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Master.Core.DataAccess">
-      <HintPath>..\..\..\Master\Bin\DataAccess\netcoreapp3.1\Master.Core.DataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="Master.Core.Logging">
       <HintPath>..\..\..\Master\Bin\Common\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handlers\CommandHandlers\" />
+    <Folder Include="ViewModels\Request\" />
   </ItemGroup>
 
 </Project>
