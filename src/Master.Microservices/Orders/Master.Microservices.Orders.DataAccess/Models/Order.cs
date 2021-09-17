@@ -11,8 +11,6 @@ namespace Master.Microservices.Catalog.DataAccess.Models
         public string Description { get; set; }
         public decimal Amount { get; set; }
         public int Status { get; set; }
-        public DateTime CreatedTime { get; set; }
-        public int CreatedBy { get; set; }       
         public Cart Cart { get; set; }
     }
 
