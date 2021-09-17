@@ -8,3 +8,5 @@
 3) Add-Migration -name InitialCreate -outputDir Migrations --> It will add migration files under migration folder
 
 4) update-database --> it will add actual database, tables and data.
+
+
