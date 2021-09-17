@@ -1,5 +1,5 @@
 ﻿
-## Db-Migration Commands
+## EFCore Migration Commands
 
 1)	Run nuget package console commands only against project Master.Microservices.Catalog.DataAccess
 
@@ -10,3 +10,4 @@
 4) update-database --> it will add actual database, tables and data.
 
 
+![EFCore Migration Commands](/MigrationCommands.png)
