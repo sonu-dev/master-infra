@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\Bin\Orders.Host</OutputPath>
+    <OutputPath>..\..\Bin\Catalog.Host</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\Orders.Host</OutputPath>
+    <OutputPath>..\..\Bin\Catalog.Host</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Master.Microservices.Orders\Master.Microservices.Catalog.csproj" />
+    <ProjectReference Include="..\Master.Microservices.Catalog\Master.Microservices.Catalog.csproj" />
   </ItemGroup>
 
   <ItemGroup>
