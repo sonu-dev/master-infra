@@ -25,5 +25,16 @@ namespace Master.Microservices.Catalog.DataAccess.Repository
         {
             return await DataContext.Set<ProductCategory>().FindAsync(categoryId);
         }
+
+        public async Task<ProductCategory> AddCategoryAsync(ProductCategory productCategory)
+        {
+            var cat = await GetCategoryByIdAsync(productCategory.Id);
+            if(cat == null)
+            {
+               await DataContext.ProductCategories.AddAsync(productCategory);
+               await DataContext.SaveChangesAsync();
+            }
+            return productCategory;
+        }
     }
 }

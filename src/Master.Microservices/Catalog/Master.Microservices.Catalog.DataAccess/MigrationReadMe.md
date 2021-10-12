@@ -10,10 +10,3 @@
 4) update-database --> it will add actual database, tables and data.
 
 
-| PMC Command                     | Usage                                             |
-|---------------------------------|---------------------------------------------------|
-| add-migration <migration name>  | Creates a migration by adding a migration snapshot|
-| Remove-migration                | Removes the last migration snapshot.              |
-| Update-database                 | Updates the database schema based on the last migration snapshot.|
-| Script-migration                | Generates a SQL script using all the migration snapshots.|
-                             

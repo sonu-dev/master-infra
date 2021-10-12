@@ -2,12 +2,14 @@ using Master.Core.Host.Bases;
 using Master.Microservices.Catalog.DataAccess.Models;
 using Master.Microservices.Catalog.DataAccess.Repository;
 using Master.Microservices.Catalog.DataAccess.Services;
+using Master.Microservices.Catalog.Handlers.Queries;
 using Master.Microservices.Catalog.Host.HostedServices;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using static Master.Microservices.Catalog.Handlers.Queries.GetAllCategoriesQuery;
 
 namespace Master.Microservices.Catalog.Host
 {
@@ -42,7 +44,11 @@ namespace Master.Microservices.Catalog.Host
 
         private void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<ICatalogService, CatalogService>();          
+            services.AddScoped<ICatalogService, CatalogService>();
+
+            // CQRS 
+            services.AddMediatR(typeof(GetAllCategoriesQuery).Assembly);
+            services.AddScoped<GetAllCategoriesQueryHandler>();
         }
         #endregion
     }

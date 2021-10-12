@@ -8,5 +8,6 @@ namespace Master.Microservices.Catalog.DataAccess.Services
     {
         Task<List<ProductCategory>> GetCategoriesAsync();
         Task<ProductCategory> GetCategoryByIdAsync(int categoryId);
+        Task<ProductCategory> AddCategoryAsync(ProductCategory productCategory);
     }
 }

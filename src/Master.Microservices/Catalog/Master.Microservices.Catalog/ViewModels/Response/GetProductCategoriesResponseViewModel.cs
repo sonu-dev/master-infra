@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Master.Microservices.Catalog.ViewModels.Response
 {
-    public class GetProductCategoriesResponseViewModel : ResponseBase
+    public class GetProductCategoriesResponseViewModel : ApiResponseBase
     {
         public List<ProductCategoryViewModel> Categories { get; set; }
     }

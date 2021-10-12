@@ -1,5 +1,5 @@
 ﻿using Master.Core.Logging;
-using Master.Microservices.Catalog.Handlers.QueryHandlers;
+using Master.Microservices.Catalog.Handlers.Queries;
 using Master.Microservices.Catalog.ViewModels;
 using Master.Microservices.Catalog.ViewModels.Response;
 using Master.Microservices.Common.Bases;
@@ -23,9 +23,9 @@ namespace Master.Microservices.Catalog.Api
         [HttpGet]
         public async Task<GetProductCategoriesResponseViewModel> GetProductCategoriesAsync()
         {
-            var productCategories = await _mediator.Send(new GetProductCategoriesQuery());
+            var response = await _mediator.Send(new GetAllCategoriesQuery());
             return new GetProductCategoriesResponseViewModel
-            { Categories = productCategories.Select(c => new ProductCategoryViewModel { Id = c.Id, Name = c.Name, Description = c.Description }).ToList() };
+            { Categories = response.Categories?.Select(c => new ProductCategoryViewModel { Id = c.Id, Name = c.Name, Description = c.Description }).ToList() };
         }
     }
 }

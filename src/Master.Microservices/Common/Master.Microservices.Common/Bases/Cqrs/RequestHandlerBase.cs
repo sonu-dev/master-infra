@@ -3,7 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Master.Microservices.Common.Bases
+namespace Master.Microservices.Common.Bases.Cqrs
 {
     /// <summary>
     /// CQRS Base Handler <br/>
@@ -11,16 +11,16 @@ namespace Master.Microservices.Common.Bases
     /// </summary>
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
-    public abstract class RequestHandlerBase<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
+    public abstract class RequestHandlerBase<THandler, TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
         where TRequest : IRequest<TResponse>      
         where TResponse : class
     {
         #region Data Members
-        protected ILog<TRequest> Log;
+        protected ILog<THandler> Log;
         #endregion
 
         #region Constructotrs
-        public RequestHandlerBase(ILog<TRequest> log)
+        public RequestHandlerBase(ILog<THandler> log)
         {
             Log = log;
         }
@@ -28,7 +28,7 @@ namespace Master.Microservices.Common.Bases
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken)
         {
-            Log.Debug($"Requesting for {typeof(TRequest).Name}");
+            Log.Debug($"Executing CQRS Handler: {typeof(THandler).Name}");
             return await ProcessAsync(request);
         }
 
