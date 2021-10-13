@@ -2,6 +2,6 @@
 {
     public abstract class ApiResponseBase
     {
-        public bool IsSuccess { get; set; }
+        public bool IsSuccess { get; set; } = true;
     }
 }

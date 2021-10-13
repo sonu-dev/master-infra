@@ -13,7 +13,7 @@ namespace Master.Web.Api.Controllers
     {
         private IUserRepository _userService;
 
-        public UserController(IUserRepository userService, ILog<UserController> log): base(log)
+        public UserController(IUserRepository userService, ILog<UserController> log): base(log, null)
         {
             _userService = userService;
         }

@@ -4,6 +4,7 @@ using Master.Microservices.Catalog.DataAccess.Repository;
 using Master.Microservices.Catalog.DataAccess.Services;
 using Master.Microservices.Catalog.Handlers.Queries;
 using Master.Microservices.Catalog.Host.HostedServices;
+using Master.Microservices.Common.Bases.Cqrs;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +26,7 @@ namespace Master.Microservices.Catalog.Host
             base.ConfigureServices(services);           
             ConfigureEfCore(services);
             RegisterServices(services);
-            services.AddMediatR(Assembly.GetExecutingAssembly()); // It will register all CQRS query and command handlers
+            RegisterCqrsHandlers(services);
         }
 
         public override void AddHostedService(IServiceCollection services)
@@ -45,9 +46,12 @@ namespace Master.Microservices.Catalog.Host
         private void RegisterServices(IServiceCollection services)
         {
             services.AddScoped<ICatalogService, CatalogService>();
+        }
 
-            // CQRS 
+        private void RegisterCqrsHandlers(IServiceCollection services)
+        {
             services.AddMediatR(typeof(GetAllCategoriesQuery).Assembly);
+            services.AddScoped<IMediatorPublisher, MediatorPublisher>();
             services.AddScoped<GetAllCategoriesQueryHandler>();
         }
         #endregion
