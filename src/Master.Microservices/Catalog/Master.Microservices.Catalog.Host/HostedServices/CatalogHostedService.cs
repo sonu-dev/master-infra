@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Master.Microservices.Catalog.Host.HostedServices
+namespace Master.Microservices.Orders.Host.HostedServices
 {
     public class CatalogHostedService : HostedServiceBase<CatalogHostedService>
     {

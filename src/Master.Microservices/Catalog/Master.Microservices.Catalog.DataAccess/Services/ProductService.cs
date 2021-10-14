@@ -1,21 +1,22 @@
 ﻿using Master.Core.Logging;
-using Master.Microservices.Catalog.DataAccess.Models;
-using Master.Microservices.Catalog.DataAccess.Services;
+using Master.Microservices.Orders.DataAccess.Models;
+using Master.Microservices.Orders.DataAccess.Services;
 using Master.Microservices.Common.Bases;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Master.Microservices.Catalog.DataAccess.Repository
+namespace Master.Microservices.Orders.DataAccess.Repository
 {
-    public class CatalogService : ServiceBase<CatalogService, CatalogDataContext>, ICatalogService
+    public class ProductService : ServiceBase<ProductService, OrderDataContext>, IProductService
     {
        
-        public CatalogService(ILog<CatalogService> log, CatalogDataContext dataContext) 
+        public ProductService(ILog<ProductService> log, OrderDataContext dataContext) 
             : base(log, dataContext)
         {
         }
 
+        #region IProductService Members
         public async Task<List<ProductCategory>> GetCategoriesAsync()
         {
             return await DataContext.Set<ProductCategory>().ToListAsync();
@@ -36,5 +37,19 @@ namespace Master.Microservices.Catalog.DataAccess.Repository
             }
             return productCategory;
         }
+        public async Task<Product> AddProductAsync(Product product)
+        {
+            await DataContext.Products.AddAsync(product);
+            await DataContext.SaveChangesAsync();
+            return product;
+        }
+
+        public async Task<List<Product>> GetAllProductsAsync()
+        {
+            var products = await DataContext.Products.Include(p => p.Category).ToListAsync();
+            return products;
+        }      
+
+        #endregion
     }
 }

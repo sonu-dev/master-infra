@@ -1,7 +1,7 @@
 ﻿using Master.Core.Host.Bases;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Master.Microservices.Catalog.Host
+namespace Master.Microservices.Orders.Host
 {
     public class CatalogServiceHost : ServiceHostBase
     {

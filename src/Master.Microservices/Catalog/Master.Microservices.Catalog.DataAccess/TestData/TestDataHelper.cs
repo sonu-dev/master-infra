@@ -1,7 +1,7 @@
-﻿using Master.Microservices.Catalog.DataAccess.Models;
+﻿using Master.Microservices.Orders.DataAccess.Models;
 using System;
 
-namespace Master.Microservices.Catalog.DataAccess.TestData
+namespace Master.Microservices.Orders.DataAccess.TestData
 {
     public class TestDataHelper
     {       

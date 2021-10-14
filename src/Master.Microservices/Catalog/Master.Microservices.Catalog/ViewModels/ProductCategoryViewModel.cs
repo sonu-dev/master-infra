@@ -1,4 +1,4 @@
-﻿namespace Master.Microservices.Catalog.ViewModels
+﻿namespace Master.Microservices.Orders.ViewModels
 {
     public class ProductCategoryViewModel
     {

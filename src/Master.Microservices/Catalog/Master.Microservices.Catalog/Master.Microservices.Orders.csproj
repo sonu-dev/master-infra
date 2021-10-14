@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Master.Microservices.Catalog.DataAccess\Master.Microservices.Catalog.DataAccess.csproj" />
+    <ProjectReference Include="..\Master.Microservices.Catalog.DataAccess\Master.Microservices.Orders.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,17 +1,17 @@
 ﻿using Master.Microservices.Common.Bases;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Master.Microservices.Catalog.DataAccess.Models
+namespace Master.Microservices.Orders.DataAccess.Models
 {
     public class Order : EntityBase 
-    {
-        [ForeignKey("Cart")]
-        public int CartId { get; set; }
+    {            
         public string Description { get; set; }
         public decimal Amount { get; set; }
         public int Status { get; set; }
-        public Cart Cart { get; set; }
+
+        public List<OrderItem> Items { get; set; }
     }
 
     public enum OrderStatus

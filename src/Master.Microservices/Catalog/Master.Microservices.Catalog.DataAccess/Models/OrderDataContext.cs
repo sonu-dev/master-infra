@@ -1,13 +1,13 @@
-﻿using Master.Microservices.Catalog.DataAccess.TestData;
+﻿using Master.Microservices.Orders.DataAccess.TestData;
 using Master.Microservices.Common.Bases;
 using Microsoft.EntityFrameworkCore;
 
-namespace Master.Microservices.Catalog.DataAccess.Models
+namespace Master.Microservices.Orders.DataAccess.Models
 {
-    public class CatalogDataContext : MasterDbContextBase
+    public class OrderDataContext : MasterDbContextBase
     {
-        public CatalogDataContext() { }
-        public CatalogDataContext(DbContextOptions<CatalogDataContext> options)
+        public OrderDataContext() { }
+        public OrderDataContext(DbContextOptions<OrderDataContext> options)
             : base(options)
         {
         }
@@ -26,8 +26,7 @@ namespace Master.Microservices.Catalog.DataAccess.Models
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Cart> Carts { get; set; }
-        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Order> Orders { get; set; }
     }
 }

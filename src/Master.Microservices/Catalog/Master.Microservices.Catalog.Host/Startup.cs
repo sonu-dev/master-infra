@@ -1,18 +1,16 @@
 using Master.Core.Host.Bases;
-using Master.Microservices.Catalog.DataAccess.Models;
-using Master.Microservices.Catalog.DataAccess.Repository;
-using Master.Microservices.Catalog.DataAccess.Services;
-using Master.Microservices.Catalog.Handlers.Queries;
-using Master.Microservices.Catalog.Host.HostedServices;
 using Master.Microservices.Common.Bases.Cqrs;
+using Master.Microservices.Orders.DataAccess.Models;
+using Master.Microservices.Orders.DataAccess.Repository;
+using Master.Microservices.Orders.DataAccess.Services;
+using Master.Microservices.Orders.Host.HostedServices;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using static Master.Microservices.Catalog.Handlers.Queries.GetAllCategoriesQuery;
+using static Master.Microservices.Catalog.Handlers.Queries.GetProductCategories;
 
-namespace Master.Microservices.Catalog.Host
+namespace Master.Microservices.Orders.Host
 {
     public class Startup : ServiceStartupBase
     {
@@ -39,20 +37,19 @@ namespace Master.Microservices.Catalog.Host
         #region Private Methods
         private void ConfigureEfCore(IServiceCollection services)
         {
-            services.AddDbContext<CatalogDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
-                b => b.MigrationsAssembly("Master.Microservices.Catalog.DataAccess")));          
+            services.AddDbContext<OrderDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
+                b => b.MigrationsAssembly("Master.Microservices.Orders.DataAccess")));          
         }
 
         private void RegisterServices(IServiceCollection services)
         {
-            services.AddScoped<ICatalogService, CatalogService>();
+            services.AddScoped<IProductService, ProductService>();
         }
 
         private void RegisterCqrsHandlers(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetAllCategoriesQuery).Assembly);
+            services.AddMediatR(typeof(GetAllCategoriesQueryHandler).Assembly);
             services.AddScoped<IMediatorPublisher, MediatorPublisher>();
-            services.AddScoped<GetAllCategoriesQueryHandler>();
         }
         #endregion
     }
