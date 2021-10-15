@@ -6,6 +6,6 @@ namespace Master.Microservices.Orders.DataAccess.Services
 {
     public interface IOrderService
     {
-        Task<bool> CreateOrderAsync(List<Product> products);
+        Task<bool> CreateOrderAsync(List<Product> products, string orderDescription);
     }
 }

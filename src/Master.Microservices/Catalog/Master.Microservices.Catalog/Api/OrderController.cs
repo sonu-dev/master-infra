@@ -1,8 +1,11 @@
 ﻿using Master.Core.Logging;
 using Master.Microservices.Common.Bases;
 using Master.Microservices.Common.Bases.Cqrs;
-using Master.Microservices.Orders.ViewModels;
+using Master.Microservices.Orders.DataAccess.Models;
+using Master.Microservices.Orders.Handlers.Commands;
+using Master.Microservices.Orders.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Master.Microservices.Orders.Api
@@ -17,9 +20,18 @@ namespace Master.Microservices.Orders.Api
         }
 
         [HttpPost]
-        public async Task<bool> CreateOrderAsync(OrderViewModel orderViewModel)
+        public async Task<bool> CreateOrderAsync(CreateOrderRequestViewModel request)
         {
-
+            var command = new CreateOrderCommand.Command(request.Products.Select(p => new Product
+            {
+                Id = p.Id,
+                CategoryId = p.CategoryId,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,              
+            }).ToList(), request.Description);
+            var response = await Mediator.PublishAsync(command);
+            return response.Success;
         }
     }
 }

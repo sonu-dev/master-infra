@@ -4,6 +4,7 @@ using Master.Microservices.Common.Bases;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Master.Microservices.Orders.DataAccess.Services
 {
@@ -15,31 +16,33 @@ namespace Master.Microservices.Orders.DataAccess.Services
         }
 
         #region IOrderService Members
-        public async Task<bool> CreateOrderAsync(List<Product> products)
+        public async Task<bool> CreateOrderAsync(List<Product> products, string orderDescription)
         {
             // Create New Order
             var newOrder = new Order
-            {                
-                Amount = 0,
-                Description = $"Created cart at {DateTime.Now}",
-                Status = (int)OrderStatus.UnPaid               
+            {
+                Amount = products.Sum(p => p.Price),
+                Description = orderDescription,
+                Status = (int)OrderStatus.UnPaid,    
+                CreatedBy = 1,
+                CreateTime = DateTime.Now,
             };
 
             await DataContext.Orders.AddAsync(newOrder);
             await DataContext.SaveChangesAsync();
 
             // Create Order Items
-            return await CreateOrderItems(newOrder.Id, products);
+            return await CreateOrderItemsAsync(newOrder.Id, products);
         }
         #endregion
 
         #region Private Methods
-        private async Task<bool> CreateOrderItems(int orderId, List<Product> products)
+        private async Task<bool> CreateOrderItemsAsync(int orderId, List<Product> products)
         {
             var items = new List<OrderItem>();
             products.ForEach(p =>
             {
-                items.Add(new OrderItem { OrderId = orderId, ProductId = p.Id });
+                items.Add(new OrderItem { OrderId = orderId, ProductId = p.Id, CreateTime = DateTime.Now });
             });
 
             await DataContext.OrderItems.AddRangeAsync(items);

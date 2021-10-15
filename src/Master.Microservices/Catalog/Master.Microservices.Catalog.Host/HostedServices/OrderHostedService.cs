@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Master.Microservices.Orders.Host.HostedServices
 {
-    public class CatalogHostedService : HostedServiceBase<CatalogHostedService>
+    public class OrderHostedService : HostedServiceBase<OrderHostedService>
     {
-        public CatalogHostedService(ILog<CatalogHostedService> log, IServiceProvider serviceProvider): base(log, serviceProvider)
+        public OrderHostedService(ILog<OrderHostedService> log, IServiceProvider serviceProvider): base(log, serviceProvider)
         {
         }
 

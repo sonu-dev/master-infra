@@ -29,7 +29,7 @@ namespace Master.Microservices.Orders.Host
 
         public override void AddHostedService(IServiceCollection services)
         {
-            services.AddHostedService<CatalogHostedService>();
+            services.AddHostedService<OrderHostedService>();
         }
 
         #endregion
@@ -44,6 +44,7 @@ namespace Master.Microservices.Orders.Host
         private void RegisterServices(IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrderService, OrderService>();
         }
 
         private void RegisterCqrsHandlers(IServiceCollection services)

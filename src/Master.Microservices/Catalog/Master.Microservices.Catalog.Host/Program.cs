@@ -4,7 +4,7 @@ namespace Master.Microservices.Orders.Host
     {
         public static void Main(string[] args)
         {
-            var host = new CatalogServiceHost();
+            var host = new OrderServiceHost();
             host.Run(args);
         }            
     }

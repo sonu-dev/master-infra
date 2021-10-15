@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Master.Microservices.Orders.Host
 {
-    public class CatalogServiceHost : ServiceHostBase
+    public class OrderServiceHost : ServiceHostBase
     {
-        public override string ServiceName => "CatalogService";
+        public override string ServiceName => "OrderService";
         public override void ConfigureWebHost(IWebHostBuilder webHostBuilder)
         {
             webHostBuilder.UseStartup<Startup>();
