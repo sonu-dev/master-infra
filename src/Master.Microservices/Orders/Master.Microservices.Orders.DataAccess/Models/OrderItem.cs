@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Master.Microservices.Orders.DataAccess.Models
 {
+    [Table("OrderItems", Schema = "Orders")]
     public class OrderItem : EntityBase
     {
         [ForeignKey("Order")]

@@ -17,17 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Master.Microservices.Catalog.DataAccess\Master.Microservices.Orders.DataAccess.csproj" />
+    <ProjectReference Include="..\Master.Microservices.Orders.DataAccess\Master.Microservices.Orders.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Master.Core.Logging">
       <HintPath>..\..\..\Master\Bin\Common\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Cqrs\" />
   </ItemGroup>
 
 </Project>

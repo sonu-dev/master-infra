@@ -11,13 +11,13 @@ namespace Master.Microservices.Orders.Handlers.Order
     #region Commands
     public class CreateOrder : IRequest<bool>
     {
-        public CreateOrder(List<DataAccess.Models.Product> products, string orderDescription)
+        public CreateOrder(List<int> productIds, string orderDescription)
         {
-            Products = products;
+            ProductIds = productIds;
             OrderDescription = orderDescription;
         }
 
-        public List<DataAccess.Models.Product> Products { get; private set; }
+        public List<int> ProductIds { get; private set; }
         public string OrderDescription { get; private set; }
     }
     #endregion
@@ -41,12 +41,12 @@ namespace Master.Microservices.Orders.Handlers.Order
         #region Handlers
         public async Task<bool> Handle(CreateOrder request, CancellationToken cancellationToken)
         {
-            if (request.Products == null || request.Products.Count == 0)
+            if (request.ProductIds == null || request.ProductIds.Count == 0)
             {
-                throw new ArgumentNullException(nameof(request.Products));
+                throw new ArgumentNullException(nameof(request.ProductIds));
             }
 
-            var result = await _service.CreateOrderAsync(request.Products, request.OrderDescription);
+            var result = await _service.CreateOrderAsync(request.ProductIds, request.OrderDescription);
             return result;
         }
         #endregion

@@ -23,11 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Paymen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Payments.DataAccess", "Master.Microservices\Payments\Master.Microservices.Payments.DataAccess\Master.Microservices.Payments.DataAccess.csproj", "{90CCD5C2-CE90-4A50-8409-46730E7CF04E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders.DataAccess", "Master.Microservices\Catalog\Master.Microservices.Catalog.DataAccess\Master.Microservices.Orders.DataAccess.csproj", "{76C13637-7B44-4992-AA28-0A954C332904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders.DataAccess", "Master.Microservices\Orders\Master.Microservices.Orders.DataAccess\Master.Microservices.Orders.DataAccess.csproj", "{76C13637-7B44-4992-AA28-0A954C332904}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders", "Master.Microservices\Catalog\Master.Microservices.Catalog\Master.Microservices.Orders.csproj", "{49536C74-159D-4168-990C-0773437AA19A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders", "Master.Microservices\Orders\Master.Microservices.Orders\Master.Microservices.Orders.csproj", "{49536C74-159D-4168-990C-0773437AA19A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders.Host", "Master.Microservices\Catalog\Master.Microservices.Catalog.Host\Master.Microservices.Orders.Host.csproj", "{342E21BA-23AF-404D-9E40-F576AA9D0A52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.Orders.Host", "Master.Microservices\Orders\Master.Microservices.Orders.Host\Master.Microservices.Orders.Host.csproj", "{342E21BA-23AF-404D-9E40-F576AA9D0A52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

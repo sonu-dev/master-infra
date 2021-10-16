@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Master.Microservices.Catalog\Master.Microservices.Orders.csproj" />
+    <ProjectReference Include="..\Master.Microservices.Orders\Master.Microservices.Orders.csproj" />
   </ItemGroup>
 
   <ItemGroup>

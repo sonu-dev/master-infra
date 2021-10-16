@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Master.Microservices.Orders.DataAccess.Models
 {
+    [Table("Orders", Schema = "Orders")]
     public class Order : EntityBase 
     {            
         public string Description { get; set; }

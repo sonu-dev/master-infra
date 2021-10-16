@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Master.Microservices.Orders.DataAccess.Migrations
 {
     [DbContext(typeof(OrderDataContext))]
-    [Migration("20211014175016_InitialCreate")]
+    [Migration("20211016110256_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", "Orders");
                 });
 
             modelBuilder.Entity("Master.Microservices.Orders.DataAccess.Models.OrderItem", b =>
@@ -79,7 +79,7 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", "Orders");
                 });
 
             modelBuilder.Entity("Master.Microservices.Orders.DataAccess.Models.Product", b =>
@@ -120,60 +120,60 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", "Orders");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8666),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8081),
                             CreatedBy = 1,
                             Description = "Laptop",
                             IsAvailable = true,
                             IsEnabled = true,
                             Name = "Laptop",
                             Price = 50000m,
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8690)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8104)
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8781),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8207),
                             CreatedBy = 1,
                             Description = "Printer",
                             IsAvailable = true,
                             IsEnabled = true,
                             Name = "Printer",
                             Price = 30000m,
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8783)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8210)
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 1,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8787),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8214),
                             CreatedBy = 1,
                             Description = "Laptop",
                             IsAvailable = true,
                             IsEnabled = true,
                             Name = "Scanner",
                             Price = 70000m,
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8788)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8215)
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8791),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8218),
                             CreatedBy = 1,
                             Description = "Written By Sadguru",
                             IsAvailable = true,
                             IsEnabled = true,
                             Name = "Karma",
                             Price = 400m,
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8792)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8220)
                         });
                 });
 
@@ -204,38 +204,38 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductCategory", "Orders");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 872, DateTimeKind.Local).AddTicks(4800),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 542, DateTimeKind.Local).AddTicks(4087),
                             CreatedBy = 1,
                             Description = "Electronics",
                             IsEnabled = true,
                             Name = "Electronics",
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7275)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(6478)
                         },
                         new
                         {
                             Id = 2,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7896),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7150),
                             CreatedBy = 1,
                             Description = "Books",
                             IsEnabled = true,
                             Name = "Books",
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7911)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7165)
                         },
                         new
                         {
                             Id = 3,
-                            CreateTime = new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7930),
+                            CreateTime = new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7183),
                             CreatedBy = 1,
                             Description = "Fashion",
                             IsEnabled = true,
                             Name = "Fashion",
-                            UpdateTime = new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7931)
+                            UpdateTime = new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7185)
                         });
                 });
 

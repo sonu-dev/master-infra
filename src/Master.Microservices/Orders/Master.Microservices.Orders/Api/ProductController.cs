@@ -38,7 +38,8 @@ namespace Master.Microservices.Orders.Api
             {
                 Name = productCategoryVm.Name,
                 Description = productCategoryVm.Description,
-                CreateTime = DateTime.Now
+                CreateTime = DateTime.Now,
+                UpdateTime = DateTime.Now
             };
             var result = await Mediator.PublishAsync(new CreateProductCategory(cat));
             return result;
@@ -56,7 +57,8 @@ namespace Master.Microservices.Orders.Api
                 CategoryId = productVm.CategoryId,
                 IsEnabled = productVm.IsEnabled,
                 IsAvailable = productVm.IsAvailable,
-                CreateTime = DateTime.Now
+                CreateTime = DateTime.Now,
+                UpdateTime = DateTime.Now
             };
             var result = await Mediator.PublishAsync(new CreateProduct(product));
             return result;
@@ -76,7 +78,7 @@ namespace Master.Microservices.Orders.Api
                     Description = p.Description,
                     CategoryId = p.CategoryId,
                     IsAvailable = p.IsAvailable,
-                    IsEnabled = p.IsEnabled,
+                    IsEnabled = p.IsEnabled,                    
                     Category = new ProductCategoryViewModel
                     {
                         Id = p.Category.Id,

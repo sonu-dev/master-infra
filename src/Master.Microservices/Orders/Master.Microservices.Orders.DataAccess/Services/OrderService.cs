@@ -16,9 +16,10 @@ namespace Master.Microservices.Orders.DataAccess.Services
         }
 
         #region IOrderService Members
-        public async Task<bool> CreateOrderAsync(List<Product> products, string orderDescription)
+        public async Task<bool> CreateOrderAsync(List<int> productIds, string orderDescription)
         {
-            // Create New Order
+            // Create New Order         
+            var products = DataContext.Products.Where(p => productIds.Contains(p.Id));
             var newOrder = new Order
             {
                 Amount = products.Sum(p => p.Price),
@@ -26,26 +27,27 @@ namespace Master.Microservices.Orders.DataAccess.Services
                 Status = (int)OrderStatus.UnPaid,    
                 CreatedBy = 1,
                 CreateTime = DateTime.Now,
+                UpdateTime = DateTime.Now
             };
 
             await DataContext.Orders.AddAsync(newOrder);
             await DataContext.SaveChangesAsync();
 
             // Create Order Items
-            return await CreateOrderItemsAsync(newOrder.Id, products);
+            return await CreateOrderItemsAsync(newOrder.Id, productIds);
         }
         #endregion
 
         #region Private Methods
-        private async Task<bool> CreateOrderItemsAsync(int orderId, List<Product> products)
+        private async Task<bool> CreateOrderItemsAsync(int orderId, List<int> productIds)
         {
-            var items = new List<OrderItem>();
-            products.ForEach(p =>
+            var orderItems = new List<OrderItem>();
+            productIds.ForEach(pId =>
             {
-                items.Add(new OrderItem { OrderId = orderId, ProductId = p.Id, CreateTime = DateTime.Now });
+                orderItems.Add(new OrderItem { OrderId = orderId, ProductId = pId, CreateTime = DateTime.Now, UpdateTime = DateTime.Now });
             });
 
-            await DataContext.OrderItems.AddRangeAsync(items);
+            await DataContext.OrderItems.AddRangeAsync(orderItems);
             await DataContext.SaveChangesAsync();
             return true;
         }

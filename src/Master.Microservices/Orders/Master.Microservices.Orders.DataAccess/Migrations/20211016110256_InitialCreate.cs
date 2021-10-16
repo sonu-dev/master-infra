@@ -7,8 +7,12 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "Orders");
+
             migrationBuilder.CreateTable(
                 name: "Orders",
+                schema: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -26,7 +30,8 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductCategories",
+                name: "ProductCategory",
+                schema: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -40,11 +45,12 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductCategories", x => x.Id);
+                    table.PrimaryKey("PK_ProductCategory", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
+                schema: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -63,15 +69,17 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_ProductCategories_CategoryId",
+                        name: "FK_Products_ProductCategory_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "ProductCategories",
+                        principalSchema: "Orders",
+                        principalTable: "ProductCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderItems",
+                schema: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -88,55 +96,64 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
+                        principalSchema: "Orders",
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderItems_Products_ProductId",
                         column: x => x.ProductId,
+                        principalSchema: "Orders",
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "ProductCategories",
+                schema: "Orders",
+                table: "ProductCategory",
                 columns: new[] { "Id", "CreateTime", "CreatedBy", "Description", "IsEnabled", "Name", "UpdateTime" },
-                values: new object[] { 1, new DateTime(2021, 10, 14, 23, 20, 15, 872, DateTimeKind.Local).AddTicks(4800), 1, "Electronics", true, "Electronics", new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7275) });
+                values: new object[] { 1, new DateTime(2021, 10, 16, 16, 32, 55, 542, DateTimeKind.Local).AddTicks(4087), 1, "Electronics", true, "Electronics", new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(6478) });
 
             migrationBuilder.InsertData(
-                table: "ProductCategories",
+                schema: "Orders",
+                table: "ProductCategory",
                 columns: new[] { "Id", "CreateTime", "CreatedBy", "Description", "IsEnabled", "Name", "UpdateTime" },
-                values: new object[] { 2, new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7896), 1, "Books", true, "Books", new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7911) });
+                values: new object[] { 2, new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7150), 1, "Books", true, "Books", new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7165) });
 
             migrationBuilder.InsertData(
-                table: "ProductCategories",
+                schema: "Orders",
+                table: "ProductCategory",
                 columns: new[] { "Id", "CreateTime", "CreatedBy", "Description", "IsEnabled", "Name", "UpdateTime" },
-                values: new object[] { 3, new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7930), 1, "Fashion", true, "Fashion", new DateTime(2021, 10, 14, 23, 20, 15, 873, DateTimeKind.Local).AddTicks(7931) });
+                values: new object[] { 3, new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7183), 1, "Fashion", true, "Fashion", new DateTime(2021, 10, 16, 16, 32, 55, 543, DateTimeKind.Local).AddTicks(7185) });
 
             migrationBuilder.InsertData(
+                schema: "Orders",
                 table: "Products",
                 columns: new[] { "Id", "CategoryId", "CreateTime", "CreatedBy", "Description", "IsAvailable", "IsEnabled", "Name", "Price", "UpdateTime" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8666), 1, "Laptop", true, true, "Laptop", 50000m, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8690) },
-                    { 2, 1, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8781), 1, "Printer", true, true, "Printer", 30000m, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8783) },
-                    { 3, 1, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8787), 1, "Laptop", true, true, "Scanner", 70000m, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8788) },
-                    { 4, 2, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8791), 1, "Written By Sadguru", true, true, "Karma", 400m, new DateTime(2021, 10, 14, 23, 20, 15, 875, DateTimeKind.Local).AddTicks(8792) }
+                    { 1, 1, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8081), 1, "Laptop", true, true, "Laptop", 50000m, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8104) },
+                    { 2, 1, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8207), 1, "Printer", true, true, "Printer", 30000m, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8210) },
+                    { 3, 1, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8214), 1, "Laptop", true, true, "Scanner", 70000m, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8215) },
+                    { 4, 2, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8218), 1, "Written By Sadguru", true, true, "Karma", 400m, new DateTime(2021, 10, 16, 16, 32, 55, 545, DateTimeKind.Local).AddTicks(8220) }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_OrderId",
+                schema: "Orders",
                 table: "OrderItems",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_ProductId",
+                schema: "Orders",
                 table: "OrderItems",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
+                schema: "Orders",
                 table: "Products",
                 column: "CategoryId");
         }
@@ -144,16 +161,20 @@ namespace Master.Microservices.Orders.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "OrderItems",
+                schema: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Orders",
+                schema: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Products",
+                schema: "Orders");
 
             migrationBuilder.DropTable(
-                name: "ProductCategories");
+                name: "ProductCategory",
+                schema: "Orders");
         }
     }
 }
