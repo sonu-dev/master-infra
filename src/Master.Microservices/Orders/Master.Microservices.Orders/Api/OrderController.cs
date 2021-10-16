@@ -6,6 +6,7 @@ using Master.Microservices.Orders.Handlers.Order;
 using Master.Microservices.Orders.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,6 +25,14 @@ namespace Master.Microservices.Orders.Api
         public async Task<bool> CreateOrderAsync(CreateOrderRequestViewModel request)
         {
             var command = new CreateOrder(request.ProductIds, request.Description);
+            var result = await Mediator.PublishAsync(command);
+            return result;
+        }
+
+        [HttpPost]
+        public async Task<bool> DoPaymentrAsync(List<int> orderIds)
+        {
+            var command = new DoPayment(orderIds);
             var result = await Mediator.PublishAsync(command);
             return result;
         }

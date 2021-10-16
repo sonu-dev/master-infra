@@ -1,48 +1,53 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Master.Core.Host.Bases;
+using Master.Microservices.Common.Bases.Cqrs;
+using Master.Microservices.Payments.DataAccess.Models;
+using Master.Microservices.Payments.Host.HostedServices;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Master.Microservices.Payments.Host
 {
-    public class Startup
+    public class Startup : ServiceStartupBase
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration): base(configuration)
         {
-            Configuration = configuration;
+            
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        #region ServiceStartupBase Members
+        public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            base.ConfigureServices(services);
+            ConfigureEfCore(services);
+            RegisterServices(services);
+            RegisterCqrsHandlers(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public override void AddHostedService(IServiceCollection services)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            services.AddHostedService<PaymentHostedService>();
         }
+
+        #endregion
+
+        #region Private Methods
+        private void ConfigureEfCore(IServiceCollection services)
+        {
+            services.AddDbContext<PaymentDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
+                b => b.MigrationsAssembly("Master.Microservices.Payments.DataAccess")));
+        }
+
+        private void RegisterServices(IServiceCollection services)
+        {
+           
+        }
+
+        private void RegisterCqrsHandlers(IServiceCollection services)
+        {
+           // services.AddMediatR(typeof(OrderCommandHandler).Assembly);
+            services.AddScoped<IMediatorPublisher, MediatorPublisher>();
+        }
+        #endregion
     }
 }

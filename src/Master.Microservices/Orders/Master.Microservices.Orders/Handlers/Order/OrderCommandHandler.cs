@@ -20,10 +20,22 @@ namespace Master.Microservices.Orders.Handlers.Order
         public List<int> ProductIds { get; private set; }
         public string OrderDescription { get; private set; }
     }
+
+    public class DoPayment : IRequest<bool>
+    {
+        public DoPayment(List<int> orderIds)
+        {
+            OrderIds = orderIds;
+        }
+
+        public List<int> OrderIds { get; private set; }
+    }
     #endregion
 
     #region OrderCommandHandler
-    public class OrderCommandHandler : IRequestHandler<CreateOrder, bool>
+    public class OrderCommandHandler : 
+        IRequestHandler<CreateOrder, bool>,
+        IRequestHandler<DoPayment, bool>
     {
         #region Data Members
         private readonly ILog<OrderCommandHandler> _log;
@@ -48,6 +60,13 @@ namespace Master.Microservices.Orders.Handlers.Order
 
             var result = await _service.CreateOrderAsync(request.ProductIds, request.OrderDescription);
             return result;
+        }
+
+        public async Task<bool> Handle(DoPayment request, CancellationToken cancellationToken)
+        {
+            // To Call Payment Microservice...
+
+            return await Task.FromResult(true);
         }
         #endregion
     }

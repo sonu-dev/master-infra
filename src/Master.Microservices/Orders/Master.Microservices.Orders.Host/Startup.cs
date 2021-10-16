@@ -18,7 +18,7 @@ namespace Master.Microservices.Orders.Host
         {            
         }
 
-        #region ApplicationStartupBase Members
+        #region ServiceStartupBase Members
         public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);           

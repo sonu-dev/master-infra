@@ -12,4 +12,18 @@
     <OutputPath>..\..\Bin\Payments</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Master.Microservices.Payments.DataAccess\Master.Microservices.Payments.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Master.Core.Logging">
+      <HintPath>..\..\..\Master\Bin\Common\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
