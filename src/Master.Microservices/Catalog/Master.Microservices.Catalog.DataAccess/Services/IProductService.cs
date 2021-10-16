@@ -8,8 +8,8 @@ namespace Master.Microservices.Orders.DataAccess.Services
     {
         Task<List<ProductCategory>> GetCategoriesAsync();
         Task<ProductCategory> GetCategoryByIdAsync(int categoryId);
-        Task<ProductCategory> AddCategoryAsync(ProductCategory productCategory);
-        Task<Product> AddProductAsync(Product product);
-        Task<List<Product>> GetAllProductsAsync();
+        Task<ProductCategory> CreateCategoryAsync(ProductCategory productCategory);
+        Task<Product> CreateProductAsync(Product product);
+        Task<List<Product>> GetAllProductsAsync(List<int> productIds);
     }
 }

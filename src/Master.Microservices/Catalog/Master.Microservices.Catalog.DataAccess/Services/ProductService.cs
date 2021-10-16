@@ -5,6 +5,7 @@ using Master.Microservices.Common.Bases;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Master.Microservices.Orders.DataAccess.Repository
 {
@@ -27,7 +28,7 @@ namespace Master.Microservices.Orders.DataAccess.Repository
             return await DataContext.Set<ProductCategory>().FindAsync(categoryId);
         }
 
-        public async Task<ProductCategory> AddCategoryAsync(ProductCategory productCategory)
+        public async Task<ProductCategory> CreateCategoryAsync(ProductCategory productCategory)
         {
             var cat = await GetCategoryByIdAsync(productCategory.Id);
             if(cat == null)
@@ -37,17 +38,20 @@ namespace Master.Microservices.Orders.DataAccess.Repository
             }
             return productCategory;
         }
-        public async Task<Product> AddProductAsync(Product product)
+        public async Task<Product> CreateProductAsync(Product product)
         {
             await DataContext.Products.AddAsync(product);
             await DataContext.SaveChangesAsync();
             return product;
         }
 
-        public async Task<List<Product>> GetAllProductsAsync()
+        public async Task<List<Product>> GetAllProductsAsync(List<int> productIds)
         {
-            var products = await DataContext.Products.Include(p => p.Category).ToListAsync();
-            return products;
+            if (productIds == null || productIds.Count == 0)
+            {
+                return await DataContext.Products.Include(p => p.Category).ToListAsync();
+            }
+            return await DataContext.Products.Include(p => p.Category).Where(p => productIds.Contains(p.Id)).ToListAsync();
         }      
 
         #endregion

@@ -3,12 +3,12 @@ using Master.Microservices.Common.Bases.Cqrs;
 using Master.Microservices.Orders.DataAccess.Models;
 using Master.Microservices.Orders.DataAccess.Repository;
 using Master.Microservices.Orders.DataAccess.Services;
+using Master.Microservices.Orders.Handlers.Order;
 using Master.Microservices.Orders.Host.HostedServices;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using static Master.Microservices.Catalog.Handlers.Queries.GetProductCategories;
 
 namespace Master.Microservices.Orders.Host
 {
@@ -49,7 +49,7 @@ namespace Master.Microservices.Orders.Host
 
         private void RegisterCqrsHandlers(IServiceCollection services)
         {
-            services.AddMediatR(typeof(GetAllCategoriesQueryHandler).Assembly);
+            services.AddMediatR(typeof(OrderCommandHandler).Assembly);
             services.AddScoped<IMediatorPublisher, MediatorPublisher>();
         }
         #endregion
