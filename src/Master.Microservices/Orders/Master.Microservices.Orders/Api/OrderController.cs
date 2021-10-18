@@ -22,6 +22,7 @@ namespace Master.Microservices.Orders.Api
         }
 
         [HttpPost]
+        [Route("CreateOrder")]
         public async Task<bool> CreateOrderAsync(CreateOrderRequestViewModel request)
         {
             var command = new CreateOrder(request.ProductIds, request.Description);
@@ -30,7 +31,8 @@ namespace Master.Microservices.Orders.Api
         }
 
         [HttpPost]
-        public async Task<bool> DoPaymentrAsync(List<int> orderIds)
+        [Route("Pay")]
+        public async Task<bool> DoPaymentAsync(List<int> orderIds)
         {
             var command = new DoPayment(orderIds);
             var result = await Mediator.PublishAsync(command);
