@@ -2,6 +2,7 @@ using Master.Core.Host.Bases;
 using Master.Microservices.Common.Bases.Cqrs;
 using Master.Microservices.Payments.DataAccess.Models;
 using Master.Microservices.Payments.Host.HostedServices;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,8 +12,7 @@ namespace Master.Microservices.Payments.Host
     public class Startup : ServiceStartupBase
     {
         public Startup(IConfiguration configuration): base(configuration)
-        {
-            
+        {            
         }
 
         #region ServiceStartupBase Members
@@ -45,7 +45,7 @@ namespace Master.Microservices.Payments.Host
 
         private void RegisterCqrsHandlers(IServiceCollection services)
         {
-           // services.AddMediatR(typeof(OrderCommandHandler).Assembly);
+            services.AddMediatR(typeof(Startup).Assembly);
             services.AddScoped<IMediatorPublisher, MediatorPublisher>();
         }
         #endregion
