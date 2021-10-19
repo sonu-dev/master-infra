@@ -1,5 +1,16 @@
 # Ocelot ApiGateway 
 
+Ocelot is an API Gateway based on the .NET Core framework and a rich set of features including:
+- Request Aggregation
+- WebSockets support
+- Rate Limiting
+- Load Balancing
+- Configuration / Administration REST API
+- QoS using Consul and Polly
+- Distributed Tracing
+- Authentication/Authorization
+Ocelot requires to provide configuration file, that has a list of ReRoutes (configuration used to map upstream request) and Global Configuration (other configuration like QoS, Rate limiting, etc.).
+
 ## Configurations 
 
 - DownstreampathTemplate -  Defines the route of actual endpoint of Microservice 

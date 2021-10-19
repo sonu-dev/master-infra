@@ -11,8 +11,22 @@
           "Port": "5001"
         }
       ],
+      // This rate limit configuration will apply only for this service call
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      // Cache configuration
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "productcategoriescache"
+      },
       "UpstreamPathTemplate": "/OrderPing",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "Key": "order-ping"
     },
 
     // PaymentService
@@ -26,10 +40,22 @@
         }
       ],
       "UpstreamPathTemplate": "/PaymentPing",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "Key": "payment-ping"
+    }
+  ],
+  // Aggregates different api responses
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "order-ping",
+        "payment-ping"
+      ],
+      "UpstreamPathTemplate": "/PingAggregate"
     }
   ],
   "GlobalConfiguration": {
+    "RequestIdKey": "X-Correlation-Id", // correlation Id
     "BaseUrl": "http://localhost:5000"
   }
 }
