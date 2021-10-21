@@ -7,7 +7,7 @@ namespace Master.Core.Host.Extensions
     {
         public static void ConfigureCommonServices(this IServiceCollection services)
         {
-            services.AddSingleton(typeof(ILog<>), typeof(Log<>));
+            services.AddSingleton(typeof(ILog<>), typeof(Log<>));           
         }
     }
 }

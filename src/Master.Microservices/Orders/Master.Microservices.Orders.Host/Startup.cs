@@ -25,13 +25,18 @@ namespace Master.Microservices.Orders.Host
             ConfigureEfCore(services);
             RegisterServices(services);
             RegisterCqrsHandlers(services);
+            services.AddHealthChecks();
         }
-
         public override void AddHostedService(IServiceCollection services)
         {
             services.AddHostedService<OrderHostedService>();
         }
 
+        public override void ConfigureHealthCheckServices(IHealthChecksBuilder healthChecksBuilder)
+        {
+            base.ConfigureHealthCheckServices(healthChecksBuilder);
+            healthChecksBuilder.AddSqlServer(Configuration.GetConnectionString("DbConnectionString"), name: "orders-service-db-sql", tags: new string[] { "Orders-Schema" });
+        }
         #endregion
 
         #region Private Methods
@@ -51,7 +56,7 @@ namespace Master.Microservices.Orders.Host
         {
             services.AddMediatR(typeof(OrderCommandHandler).Assembly);
             services.AddScoped<IMediatorPublisher, MediatorPublisher>();
-        }
+        }       
         #endregion
     }
 }
