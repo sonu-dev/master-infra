@@ -1,4 +1,6 @@
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +20,10 @@ namespace Master.Microservices.HealthCheck
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHealthChecksUI().AddInMemoryStorage();
+            services.AddHealthChecksUI()
+                .AddInMemoryStorage();
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,15 +39,12 @@ namespace Master.Microservices.HealthCheck
             }
 
             app.UseStaticFiles();
-
-            app.UseRouting();
-
-           // app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHealthChecksUI();
-            });
+            app.UseHealthChecksUI(config => config.UIPath = "/hc-ui");
+            app.UseRouting()
+                 .UseEndpoints(config =>
+                 {
+                     config.MapHealthChecksUI();
+                 });
         }
     }
 }
