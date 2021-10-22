@@ -54,7 +54,7 @@ namespace Master.Microservices.Orders.Host
 
         private void RegisterCqrsHandlers(IServiceCollection services)
         {
-            services.AddMediatR(typeof(OrderCommandHandler).Assembly);
+            services.AddMediatR(typeof(CreateOrderCommandHandler).Assembly);
             services.AddScoped<IMediatorPublisher, MediatorPublisher>();
         }       
         #endregion

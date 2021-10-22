@@ -33,9 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.ApiGateway", "Master.Microservices\ApiGateway\Master.Microservices.ApiGateway\Master.Microservices.ApiGateway.csproj", "{DC5F25E5-E46C-4111-AA52-EDACD7651A21}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthCheck", "HealthCheck", "{E7970223-0E73-4929-865F-EC8EAF1399EC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebStatus", "WebStatus", "{E7970223-0E73-4929-865F-EC8EAF1399EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master.Microservices.HealthCheck", "Master.Microservices\HealthCheck\Master.Microservices.HealthCheck\Master.Microservices.HealthCheck.csproj", "{CF31AD86-885F-4EF3-94BE-A76EDC6FCCB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master.Microservices.WebStatus", "Master.Microservices\HealthCheck\Master.Microservices.HealthCheck\Master.Microservices.WebStatus.csproj", "{CF31AD86-885F-4EF3-94BE-A76EDC6FCCB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
