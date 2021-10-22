@@ -29,6 +29,7 @@ An Illustration for proof of concepts of Microservice architecture and best prac
 - Responses Aggregation
 - Load Balance
 ### Master.Microservices.HealthCheck
+- DogsWatch
 ### SPA 
 - Angular App
 
