@@ -5,6 +5,7 @@ An Illustration for proof of concepts of Microservice architecture and best prac
 - CQRS and event driven architecture, Asynchronous communication using MassTransit and RabbitMQ
 - ApiGateway (Ocelot)
 - HealthCheck (Microsoft.AspNetCore.Diagnostics.HealthChecks)
+- Identity
 - Repository Pattern and Unit of Work
 - PostgreSql
 ## Deployement
@@ -23,6 +24,9 @@ An Illustration for proof of concepts of Microservice architecture and best prac
 - Dapper
 - Rabbit MQ
 ### Master.Microservices.ApiGateway
+- Authentication and Authorization
+- Identity
+- JWT Authentication
 ### Master.Microservices.HealthCheck
 ### SPA 
 - Angular App
