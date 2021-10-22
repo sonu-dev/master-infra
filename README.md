@@ -24,9 +24,10 @@ An Illustration for proof of concepts of Microservice architecture and best prac
 - Dapper
 - Rabbit MQ
 ### Master.Microservices.ApiGateway
-- Authentication and Authorization
-- Identity
-- JWT Authentication
+- Authentication and Authorization - Identity
+- Response Caching
+- Responses Aggregation
+- Load Balance
 ### Master.Microservices.HealthCheck
 ### SPA 
 - Angular App
