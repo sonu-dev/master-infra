@@ -10,7 +10,7 @@ namespace Master.Web.Api.Controllers
     [Route("[controller]")]    
     public class PingController : ApiControllerBase<PingController>
     {
-        public PingController(ILog<PingController> log) : base(log, null)
+        public PingController(ILog<PingController> log) : base(log)
         {
         }
 

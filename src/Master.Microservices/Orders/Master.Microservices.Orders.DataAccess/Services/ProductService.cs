@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Master.Microservices.Orders.DataAccess.Repository
 {
-    public class ProductService : ServiceBase<ProductService, OrderDataContext>, IProductService
+    public class ProductService : DataServiceBase<ProductService, OrderDataContext>, IProductService
     {
        
         public ProductService(ILog<ProductService> log, OrderDataContext dataContext) 

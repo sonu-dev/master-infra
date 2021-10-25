@@ -2,14 +2,12 @@
 
 namespace Master.Microservices.Common.Bases
 {
-    public abstract class ServiceBase<TService, TDataContext>       
-    {  
+    public abstract class ServiceBase<TService>
+    {
         protected readonly ILog<TService> Log;
-        protected readonly TDataContext DataContext;
-        public ServiceBase(ILog<TService> log, TDataContext dataContext)
+        public ServiceBase(ILog<TService> log)
         {
             Log = log;
-            DataContext = dataContext;
-        }        
+        }
     }
 }

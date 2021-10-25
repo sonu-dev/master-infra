@@ -5,13 +5,11 @@ namespace Master.Microservices.Common.Bases
 {
     public abstract class ApiControllerBase<T>
     {
-        protected readonly ILog<T> Log;
-        protected readonly IMediatorPublisher Mediator;
+        protected readonly ILog<T> Log;       
 
-        public ApiControllerBase(ILog<T> log, IMediatorPublisher mediator)
+        public ApiControllerBase(ILog<T> log)
         {
-            Log = log;
-            Mediator = mediator;
+            Log = log;           
         }
     }
 }

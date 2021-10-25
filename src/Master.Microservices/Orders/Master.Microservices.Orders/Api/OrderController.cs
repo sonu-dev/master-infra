@@ -14,8 +14,10 @@ namespace Master.Microservices.Orders.Api
     [Route("api/[controller]")]
     public class OrderController : ApiControllerBase<OrderController>
     {
-        public OrderController(ILog<OrderController> log, IMediatorPublisher mediator) : base(log, mediator)
+        protected readonly IMediatorPublisher _mediator;
+        public OrderController(ILog<OrderController> log, IMediatorPublisher mediator) : base(log)
         {
+            _mediator = mediator;
         }
 
         [HttpPost]
@@ -23,16 +25,16 @@ namespace Master.Microservices.Orders.Api
         public async Task<bool> CreateOrderAsync(CreateOrderRequestViewModel request)
         {
             var command = new CreateOrderCommand(request.ProductIds, request.Description);
-            var result = await Mediator.PublishAsync(command);
+            var result = await _mediator.PublishAsync(command);
             return result;
         }
 
         [HttpPost]
         [Route("PayOrder")]
-        public async Task<bool> DoPaymentAsync(List<int> orderIds)
+        public async Task<bool> PayOrderAsync(List<int> orderIds)
         {
             var command = new PayOrderCommand(orderIds);
-            var result = await Mediator.PublishAsync(command);
+            var result = await _mediator.PublishAsync(command);
             return result;
         }
     }

@@ -17,7 +17,9 @@ namespace Master.Microservices.Orders.DataAccess.Models
 
     public enum OrderStatus
     {
-        UnPaid,
-        Paid       
+        Created,
+        InitiatePayment,
+        PaymentFailed,
+        Completed
     }
 }

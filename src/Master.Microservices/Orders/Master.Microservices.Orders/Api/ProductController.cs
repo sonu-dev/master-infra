@@ -20,15 +20,17 @@ namespace Master.Microservices.Orders.Api
     [Route("api/[controller]")]
     public class ProductController : ApiControllerBase<ProductController>
     {
-        public ProductController(ILog<ProductController> log, IMediatorPublisher mediator) : base(log, mediator)
+        protected readonly IMediatorPublisher _mediator;
+        public ProductController(ILog<ProductController> log, IMediatorPublisher mediator) : base(log)
         {
+            _mediator = mediator;
         }
        
         [HttpGet]
         [Route("GetProductCategories")]
         public async Task<GetProductCategoriesResponseViewModel> GetProductCategoriesAsync()
         {
-            var cats = await Mediator.PublishAsync(new GetProductcategoriesQuery());
+            var cats = await _mediator.PublishAsync(new GetProductcategoriesQuery());
             return new GetProductCategoriesResponseViewModel
             { Categories = cats.Select(c => new ProductCategoryViewModel { Id = c.Id, Name = c.Name, Description = c.Description }).ToList() };
         }
@@ -44,7 +46,7 @@ namespace Master.Microservices.Orders.Api
                 CreateTime = DateTime.Now,
                 UpdateTime = DateTime.Now
             };
-            var result = await Mediator.PublishAsync(new CreateProductCategoryCommand(cat));
+            var result = await _mediator.PublishAsync(new CreateProductCategoryCommand(cat));
             return result;
         }
 
@@ -63,7 +65,7 @@ namespace Master.Microservices.Orders.Api
                 CreateTime = DateTime.Now,
                 UpdateTime = DateTime.Now
             };
-            var result = await Mediator.PublishAsync(new CreateProductCommand(product));
+            var result = await _mediator.PublishAsync(new CreateProductCommand(product));
             return result;
         }
 
@@ -71,7 +73,7 @@ namespace Master.Microservices.Orders.Api
         [Route("GetProducts")]
         public async Task<GetProductsResponseViewModel> GetProductsAsync(List<int> productIds)
         {
-            var products = await Mediator.PublishAsync(new GetProductsQuery(productIds));
+            var products = await _mediator.PublishAsync(new GetProductsQuery(productIds));
             return new GetProductsResponseViewModel
             {
                 Products = products.Select(p => new ProductViewModel

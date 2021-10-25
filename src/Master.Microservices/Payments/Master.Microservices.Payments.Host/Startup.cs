@@ -1,12 +1,17 @@
+using MassTransit;
 using Master.Core.Host.Bases;
-using Master.Microservices.Common.Bases.Cqrs;
-using Master.Microservices.Payments.DataAccess.Models;
+using Master.Microservices.Common.Constants;
+using Master.Microservices.Common.Dapper;
+using Master.Microservices.Common.RabbitMq.Constants;
+using Master.Microservices.Common.RabbitMq.Host;
+using Master.Microservices.Common.RabbitMq.Producer;
+using Master.Microservices.Payments.Consumers;
+using Master.Microservices.Payments.DataAccess.Services;
 using Master.Microservices.Payments.Host.HostedServices;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Plain.RabbitMQ;
+using System;
 
 namespace Master.Microservices.Payments.Host
 {
@@ -20,10 +25,9 @@ namespace Master.Microservices.Payments.Host
         public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            ConfigureEfCore(services);
-            ConfigureRabbitMq(services);
+            ConfigureDapper(services);          
             RegisterServices(services);
-            RegisterCqrsHandlers(services);
+            services.RegisterMassTransit();
         }
 
         public override void AddHostedService(IServiceCollection services)
@@ -40,26 +44,37 @@ namespace Master.Microservices.Payments.Host
         #endregion
 
         #region Private Methods
-        private void ConfigureEfCore(IServiceCollection services)
+        private void ConfigureDapper(IServiceCollection services)
         {
-            services.AddDbContext<PaymentDataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"),
-                b => b.MigrationsAssembly("Master.Microservices.Payments.DataAccess")));
+            services.AddSingleton<DapperContext>();
         }
-
-        private void ConfigureRabbitMq(IServiceCollection services)
-        {
-           // services.AddSingleton<IConnectionProvider>(new ConnectionProvider(Configuration.GetValue<string>("RabbitMqConnection")));
-        }
-
+      
         private void RegisterServices(IServiceCollection services)
         {
-           
+            services.AddScoped<IPaymentService, PaymentService>();
         }
-
-        private void RegisterCqrsHandlers(IServiceCollection services)
+        private void RegisterMassTransit(IServiceCollection services)
         {
-            services.AddMediatR(typeof(Startup).Assembly);
-            services.AddScoped<IMediatorPublisher, MediatorPublisher>();
+            services.AddMassTransit(x =>
+            {
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(confiure =>
+                {                   
+                    confiure.Host(new Uri(RabbitMqConfigurations.RabbitMqUri), h =>
+                    {
+                        h.Username(RabbitMqConfigurations.UserName);
+                        h.Password(RabbitMqConfigurations.Password);
+                    });
+
+                    confiure.ReceiveEndpoint(QueueNames.OrderPaymentQueue, c =>
+                    {
+                        c.PrefetchCount = 20;
+                        c.ConfigureConsumer<CreateOrderPaymentConsumer>(provider);
+                    });
+                }));
+            });
+
+            services.AddMassTransitHostedService();
+            services.AddSingleton<IQueueProducer, QueueProducer>();
         }
         #endregion
     }
