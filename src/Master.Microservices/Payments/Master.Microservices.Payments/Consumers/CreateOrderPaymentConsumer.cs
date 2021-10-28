@@ -21,9 +21,7 @@ namespace Master.Microservices.Payments.Consumers
                 OrderId = message.OrderId,
                 OrderAmount = message.OrderAmount,
                 PaymentStatus = (int)PaymentStatus.UnPaid,
-                PaymentType = (int)PaymentType.DebitCard,
-                CreateTime = System.DateTime.Now,
-                UpdateTime = System.DateTime.Now,
+                PaymentType = (int)PaymentType.DebitCard,               
                 CreatedBy = 1
             };
         

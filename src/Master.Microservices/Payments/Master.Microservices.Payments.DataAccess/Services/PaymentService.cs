@@ -27,8 +27,8 @@ namespace Master.Microservices.Payments.DataAccess.Services
             parameters.Add("PaymentType", order.PaymentType, DbType.Int32);
             parameters.Add("Status", order.PaymentStatus, DbType.Int32);
             parameters.Add("CreatedBy", order.CreatedBy, DbType.Int32);
-            parameters.Add("CreateTime", order.CreateTime, DbType.DateTime);
-            parameters.Add("UpdateTime", order.UpdateTime, DbType.DateTime);
+            parameters.Add("CreateTime", DateTime.Now, DbType.DateTime);
+            parameters.Add("UpdateTime", DateTime.Now, DbType.DateTime);
 
             var result = -1;
             using var connection = _dbContext.CreateConnection();

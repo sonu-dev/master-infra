@@ -22,7 +22,7 @@ namespace Master.Microservices.Orders.Api
 
         [HttpPost]
         [Route("CreateOrder")]
-        public async Task<bool> CreateOrderAsync(CreateOrderRequestViewModel request)
+        public async Task<bool> CreateOrderAsync([FromBody] CreateOrderRequestViewModel request)
         {
             var command = new CreateOrderCommand(request.ProductIds, request.Description);
             var result = await _mediator.PublishAsync(command);
@@ -31,7 +31,7 @@ namespace Master.Microservices.Orders.Api
 
         [HttpPost]
         [Route("PayOrder")]
-        public async Task<bool> PayOrderAsync(List<int> orderIds)
+        public async Task<bool> PayOrderAsync([FromBody] List<int> orderIds)
         {
             var command = new PayOrderCommand(orderIds);
             var result = await _mediator.PublishAsync(command);

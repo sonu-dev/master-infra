@@ -26,7 +26,8 @@
       },
       "UpstreamPathTemplate": "/OrderPing",
       "UpstreamHttpMethod": [ "GET" ],
-      "Key": "order-ping"
+      "Key": "order-ping",
+      "SwaggerKey": "pingorder"
     },
 
     // PaymentService
@@ -52,6 +53,18 @@
         "payment-ping"
       ],
       "UpstreamPathTemplate": "/PingAggregate"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "pingorder",
+      "Config": [
+        {
+          "Name": "Orders API",
+          "Version": "v1",
+          "Url": "http://localhost:5001/swagger/v1/swagger.json"
+        }
+      ]
     }
   ],
   "GlobalConfiguration": {

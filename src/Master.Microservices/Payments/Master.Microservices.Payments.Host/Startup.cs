@@ -3,12 +3,15 @@ using MassTransit;
 using Master.Core.Host.Bases;
 using Master.Microservices.Common.Constants;
 using Master.Microservices.Common.Dapper;
+using Master.Microservices.Common.Host.Extensions;
 using Master.Microservices.Common.RabbitMq.Configurations;
 using Master.Microservices.Common.RabbitMq.Constants;
 using Master.Microservices.Common.RabbitMq.Producer;
 using Master.Microservices.Payments.Consumers;
 using Master.Microservices.Payments.DataAccess.Services;
 using Master.Microservices.Payments.Host.HostedServices;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +32,13 @@ namespace Master.Microservices.Payments.Host
             ConfigureDapper(services);          
             RegisterServices(services);
             RegisterMassTransit(services);
+            services.AddSwagger("PaymentsService", "v1");
+        }
+
+        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            base.Configure(app, env);
+            app.ConfigureSwagger("v1/swagger.json", "PaymentService API V1");
         }
 
         public override void AddHostedService(IServiceCollection services)

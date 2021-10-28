@@ -37,7 +37,7 @@ namespace Master.Microservices.Orders.Api
 
         [HttpPost]
         [Route("CreateCategory")]
-        public async Task<bool> CreateCategoryAsync(ProductCategoryViewModel productCategoryVm)
+        public async Task<bool> CreateCategoryAsync([FromBody] ProductCategoryViewModel productCategoryVm)
         {
             var cat = new ProductCategory
             {
@@ -52,7 +52,7 @@ namespace Master.Microservices.Orders.Api
 
         [HttpPost]
         [Route("CreateProduct")]
-        public async Task<bool> CreateProductAsync(ProductViewModel productVm)
+        public async Task<bool> CreateProductAsync([FromBody] ProductViewModel productVm)
         {
             var product = new Product
             {
@@ -71,7 +71,7 @@ namespace Master.Microservices.Orders.Api
 
         [HttpGet]
         [Route("GetProducts")]
-        public async Task<GetProductsResponseViewModel> GetProductsAsync(List<int> productIds)
+        public async Task<GetProductsResponseViewModel> GetProductsAsync([FromBody] List<int> productIds)
         {
             var products = await _mediator.PublishAsync(new GetProductsQuery(productIds));
             return new GetProductsResponseViewModel

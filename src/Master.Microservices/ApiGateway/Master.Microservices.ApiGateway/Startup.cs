@@ -25,6 +25,8 @@ namespace Master.Microservices.ApiGateway
             {
                 x.WithDictionaryHandle();
             });
+            services.AddSwaggerForOcelot(_configuration);
+            services.AddMvcCore().AddApiExplorer();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,8 +40,15 @@ namespace Master.Microservices.ApiGateway
             {
                 endpoints.MapControllers();
             });
+
             //ocelot
             await app.UseOcelot();
+
+            //Swagger
+            app.UseSwaggerForOcelotUI(opt =>
+            {
+                opt.PathToSwaggerGenerator = "/swagger/docs";
+            });
         }
     }
 }

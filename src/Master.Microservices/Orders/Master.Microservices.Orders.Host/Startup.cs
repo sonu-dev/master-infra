@@ -1,8 +1,8 @@
 using MassTransit;
 using Master.Core.Host.Bases;
 using Master.Microservices.Common.Bases.Cqrs;
+using Master.Microservices.Common.Host.Extensions;
 using Master.Microservices.Common.RabbitMq.Configurations;
-using Master.Microservices.Common.RabbitMq.Constants;
 using Master.Microservices.Common.RabbitMq.Producer;
 using Master.Microservices.Orders.Consumers;
 using Master.Microservices.Orders.DataAccess.Models;
@@ -11,10 +11,11 @@ using Master.Microservices.Orders.DataAccess.Services;
 using Master.Microservices.Orders.Handlers.Order;
 using Master.Microservices.Orders.Host.HostedServices;
 using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Master.Microservices.Orders.Host
 {
@@ -32,7 +33,13 @@ namespace Master.Microservices.Orders.Host
             RegisterServices(services);
             RegisterMassTransit(services);
             RegisterCqrsHandlers(services);
-            services.AddHealthChecks();            
+            services.AddHealthChecks();
+            services.AddSwagger("OrdersService", "v1");
+        }
+        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            base.Configure(app, env);          
+            app.ConfigureSwagger("/swagger/v1/swagger.json", "Orders API");
         }
         public override void AddHostedService(IServiceCollection services)
         {
