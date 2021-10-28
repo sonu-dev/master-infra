@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Master.Microservices.Orders.Consumers
 {
-    public class OrderPaymentCreatedConsumer : ConsumerBase<OrderPaymentCreatedConsumer, OrderPaymentResponseMessage>
+    public class CreateOrderPaymentResponse : ConsumerBase<CreateOrderPaymentResponse, OrderPaymentResponseMessage>
     {
-        public OrderPaymentCreatedConsumer(ILog<OrderPaymentCreatedConsumer> log): base(log)
+        public CreateOrderPaymentResponse(ILog<CreateOrderPaymentResponse> log): base(log)
         {
         }
         protected override async Task ProcessMessageAsync(OrderPaymentResponseMessage message)

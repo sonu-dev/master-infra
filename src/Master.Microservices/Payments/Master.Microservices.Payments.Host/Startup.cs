@@ -1,9 +1,10 @@
+using GreenPipes;
 using MassTransit;
 using Master.Core.Host.Bases;
 using Master.Microservices.Common.Constants;
 using Master.Microservices.Common.Dapper;
+using Master.Microservices.Common.RabbitMq.Configurations;
 using Master.Microservices.Common.RabbitMq.Constants;
-using Master.Microservices.Common.RabbitMq.Host;
 using Master.Microservices.Common.RabbitMq.Producer;
 using Master.Microservices.Payments.Consumers;
 using Master.Microservices.Payments.DataAccess.Services;
@@ -27,7 +28,7 @@ namespace Master.Microservices.Payments.Host
             base.ConfigureServices(services);
             ConfigureDapper(services);          
             RegisterServices(services);
-            services.RegisterMassTransit();
+            RegisterMassTransit(services);
         }
 
         public override void AddHostedService(IServiceCollection services)
@@ -55,21 +56,14 @@ namespace Master.Microservices.Payments.Host
         }
         private void RegisterMassTransit(IServiceCollection services)
         {
-            services.AddMassTransit(x =>
+            services.AddMassTransit(cfg =>
             {
-                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(confiure =>
-                {                   
-                    confiure.Host(new Uri(RabbitMqConfigurations.RabbitMqUri), h =>
-                    {
-                        h.Username(RabbitMqConfigurations.UserName);
-                        h.Password(RabbitMqConfigurations.Password);
-                    });
-
-                    confiure.ReceiveEndpoint(QueueNames.OrderPaymentQueue, c =>
-                    {
-                        c.PrefetchCount = 20;
-                        c.ConfigureConsumer<CreateOrderPaymentConsumer>(provider);
-                    });
+                cfg.AddConsumer<CreateOrderPaymentConsumer>();
+                cfg.SetKebabCaseEndpointNameFormatter();
+                cfg.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(configure =>
+                {
+                    BusConfigurator.ConfigureBus(configure);
+                    configure.ConfigureEndpoints(provider);
                 }));
             });
 

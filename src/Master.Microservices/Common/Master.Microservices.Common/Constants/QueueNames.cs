@@ -2,7 +2,7 @@
 {
     public class QueueNames
     {
-        public const string OrderPaymentQueue = "orderPaymentQueue";
-        public const string OrderPaymentResponseQueue = "OrderPaymentResponseQueue";
+        public const string CreateOrderPaymentQueue = "create-order-payment";
+        public const string CreateOrderPaymentResponseQueue = "create-order-payment-response";
     }
 }

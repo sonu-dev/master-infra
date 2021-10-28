@@ -20,7 +20,7 @@ namespace Master.Microservices.Common.RabbitMq.Producer
         {
             _log.Debug($"Sending message of type {typeof(TMessage).Name} to {queueName}");
 
-            var uri = new Uri($"{RabbitMqConfigurations.RabbitMqUri}/{queueName}");
+            var uri = new Uri($"{RabbitMqConfigurations.RabbitMqUri}{queueName}");
             var endPoint = await _bus.GetSendEndpoint(uri);
             await endPoint.Send(message);
             return true;

@@ -1,4 +1,5 @@
 ﻿using Master.Core.Logging;
+using Master.Microservices.Common.Constants;
 using Master.Microservices.Common.Messages;
 using Master.Microservices.Common.RabbitMq.Producer;
 using Master.Microservices.Orders.DataAccess.Services;
@@ -12,7 +13,7 @@ namespace Master.Microservices.Orders.Commands.PayOrder
     public class PayOrderCommandHandler : IRequestHandler<PayOrderCommand, bool>
     {
         #region Data Members       
-        private readonly IOrderService _service;       
+        private readonly IOrderService _service;
         private readonly IQueueProducer _queueProducer;
         private readonly ILog<PayOrderCommandHandler> _log;
         #endregion
@@ -25,13 +26,13 @@ namespace Master.Microservices.Orders.Commands.PayOrder
         }
         public async Task<bool> Handle(PayOrderCommand request, CancellationToken cancellationToken)
         {
-            //var result = await _service.InitiatePayment(request.OrderIds);
-            //if(result?.Count > 0)
-            //{
-            // Invoke PaymentService
-            var firstItem = new { Key = 1, Value = 280}; //result.First();
-                await _queueProducer.SendAsync(new OrderPaymentMessage { OrderId = firstItem.Key, OrderAmount = firstItem.Value }, "master-orderpayment");
-           // }
+            var result = await _service.InitiatePayment(request.OrderIds);
+            if (result?.Count > 0)
+            {
+                // Talk to PaymentService
+                var firstItem = result.First();
+                await _queueProducer.SendAsync(new OrderPaymentMessage { OrderId = firstItem.Key, OrderAmount = firstItem.Value }, QueueNames.CreateOrderPaymentQueue);
+            }
             return true;
         }
     }

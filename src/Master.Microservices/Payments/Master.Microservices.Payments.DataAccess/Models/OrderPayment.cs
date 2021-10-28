@@ -16,7 +16,7 @@ namespace Master.Microservices.Payments.DataAccess.Models
 
     public enum PaymentType
     {
-        DebitCard,
+        DebitCard = 1,
         CreditCard,
         NetBanking,
         CashOnDelivery
@@ -24,7 +24,7 @@ namespace Master.Microservices.Payments.DataAccess.Models
 
     public enum PaymentStatus
     {
-       UnPaid,
+       UnPaid = 1,
        Success,
        Failiure
     }

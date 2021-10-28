@@ -30,4 +30,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RabbitMq\Host\" />
+  </ItemGroup>
+
 </Project>

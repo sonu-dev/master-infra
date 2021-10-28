@@ -19,7 +19,7 @@ namespace Master.Microservices.Payments.DataAccess.Services
 
         public async Task<int> CreateOrderPaymentAsync(OrderPayment order)
         {
-            var query = "insert into [Payments].[OrderPayment] ([OrderId],[OrderAmount],[PaymentType],[Status],[CreatedBy],[CreateTime],[UpdateTime]) VALUES(@OrderId,@OrderAmount,@PaymentType,@Status,@CreatedBy,@CreateTime@,@UpdateTime)";
+            var query = "insert into [Payments].[OrderPayment] ([OrderId],[OrderAmount],[PaymentType],[Status],[CreatedBy],[CreateTime],[UpdateTime]) VALUES(@OrderId,@OrderAmount,@PaymentType,@Status,@CreatedBy,@CreateTime,@UpdateTime)";
 
             var parameters = new DynamicParameters();
             parameters.Add("OrderId", order.OrderId, DbType.Int32);
@@ -32,20 +32,23 @@ namespace Master.Microservices.Payments.DataAccess.Services
 
             var result = -1;
             using var connection = _dbContext.CreateConnection();
-            using (var transaction = connection.BeginTransaction())
             {
-                try
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
                 {
-                    result = await transaction.Connection.ExecuteAsync(query, parameters);
-                    transaction.Commit();                   
-                }
-                catch (Exception ex)
-                {
-                    Log.Error(ex.Message);
-                    transaction.Rollback();
+                    try
+                    {
+                        result = await connection.ExecuteAsync(query, parameters, transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex.Message);
+                        transaction.Rollback();
+                    }
                 }
             }
-           return result;
+            return result;
         }
     }
 }

@@ -1,9 +1,8 @@
 using MassTransit;
 using Master.Core.Host.Bases;
 using Master.Microservices.Common.Bases.Cqrs;
-using Master.Microservices.Common.Constants;
+using Master.Microservices.Common.RabbitMq.Configurations;
 using Master.Microservices.Common.RabbitMq.Constants;
-using Master.Microservices.Common.RabbitMq.Host;
 using Master.Microservices.Common.RabbitMq.Producer;
 using Master.Microservices.Orders.Consumers;
 using Master.Microservices.Orders.DataAccess.Models;
@@ -67,25 +66,16 @@ namespace Master.Microservices.Orders.Host
         }
         private void RegisterMassTransit(IServiceCollection services)
         {
-            services.AddMassTransit(x =>
+            services.AddMassTransit(cfg =>
             {
-                x.AddConsumer<OrderPaymentCreatedConsumer>();
-                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(confiure =>
-                {                   
-                    confiure.Host(new Uri(RabbitMqConfigurations.RabbitMqUri), h =>
-                    {
-                        h.Username(RabbitMqConfigurations.UserName);
-                        h.Password(RabbitMqConfigurations.Password);
-                    });
-
-                    //confiure.ReceiveEndpoint(QueueNames.OrderPaymentResponseQueue, c =>
-                    //{
-                    //    c.PrefetchCount = 20;
-                    //    c.ConfigureConsumer<OrderPaymentCreatedConsumer>(provider);
-                    //});
+                cfg.AddConsumer<CreateOrderPaymentResponse>();
+                cfg.SetKebabCaseEndpointNameFormatter();
+                cfg.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(configure =>
+                {
+                    BusConfigurator.ConfigureBus(configure);
+                    configure.ConfigureEndpoints(provider);
                 }));
             });
-
             services.AddMassTransitHostedService();
             services.AddScoped<IQueueProducer, QueueProducer>();
         }
