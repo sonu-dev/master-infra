@@ -20,7 +20,8 @@ namespace Master.Microservices.Payments.Controllers
         }
 
         [HttpGet]
-        public async Task<string> TestAsync()
+        [Route("Ping")]
+        public async Task<string> PingAsync()
         {
             return await Task.FromResult($"Server called at {DateTime.Now}");
         }

@@ -1,9 +1,9 @@
 ﻿{
   "Routes": [
 
-    // OrderService
+    // OrderController - OrdersService
     {
-      "DownstreamPathTemplate": "/api/Ping",
+      "DownstreamPathTemplate": "/api/Order/ping",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -11,28 +11,41 @@
           "Port": "5001"
         }
       ],
-      // This rate limit configuration will apply only for this service call
-      "RateLimitOptions": {
-        "ClientWhitelist": [],
-        "EnableRateLimiting": true,
-        "Period": "5s",
-        "PeriodTimespan": 1,
-        "Limit": 1
-      },
-      // Cache configuration
-      "FileCacheOptions": {
-        "TtlSeconds": 30,
-        "Region": "productcategoriescache"
-      },
-      "UpstreamPathTemplate": "/OrderPing",
-      "UpstreamHttpMethod": [ "GET" ],
-      "Key": "order-ping",
-      "SwaggerKey": "pingorder"
+      "UpstreamPathTemplate": "/api/Orders/ping",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "Key": "order-ping"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Order/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5001"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Orders/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "SwaggerKey": "order"
+    },
+    // ProductController - OrdersService
+    {
+      "DownstreamPathTemplate": "/api/Product/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5001"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Products/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "SwaggerKey": "order"
     },
 
-    // PaymentService
+    // PaymentController - PaymentsService
     {
-      "DownstreamPathTemplate": "/api/Ping",
+      "DownstreamPathTemplate": "/api/Payment/ping",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -40,29 +53,52 @@
           "Port": "5002"
         }
       ],
-      "UpstreamPathTemplate": "/PaymentPing",
-      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamPathTemplate": "/api/Payments/ping",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "Key": "payment-ping"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Payment/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5002"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Payments/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "SwaggerKey": "payment"
     }
   ],
   // Aggregates different api responses
   "Aggregates": [
     {
       "RouteKeys": [
-        "order-ping",
+        "order-ping", 
         "payment-ping"
       ],
-      "UpstreamPathTemplate": "/PingAggregate"
+      "UpstreamPathTemplate": "/aggregate"      
     }
   ],
   "SwaggerEndPoints": [
     {
-      "Key": "pingorder",
+      "Key": "order",
       "Config": [
         {
           "Name": "Orders API",
           "Version": "v1",
           "Url": "http://localhost:5001/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "payment",
+      "Config": [
+        {
+          "Name": "Payments API",
+          "Version": "v1",
+          "Url": "http://localhost:5002/swagger/v1/swagger.json"
         }
       ]
     }

@@ -5,6 +5,7 @@ using Master.Microservices.Orders.Commands.CreateOrder;
 using Master.Microservices.Orders.Commands.PayOrder;
 using Master.Microservices.Orders.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,6 +19,13 @@ namespace Master.Microservices.Orders.Api
         public OrderController(ILog<OrderController> log, IMediatorPublisher mediator) : base(log)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        [Route("Ping")]
+        public async Task<string> PingAsync()
+        {
+            return await Task.FromResult($"Server called at {DateTime.Now}");
         }
 
         [HttpPost]
