@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Reference Include="Master.Core.Logging">
-      <HintPath>..\..\..\Master\Bin\Common\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
+      <HintPath>..\..\..\Master\Bin\Logging\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
     </Reference>
   </ItemGroup>
 

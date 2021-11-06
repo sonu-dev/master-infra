@@ -29,6 +29,7 @@ namespace Master.Microservices.Payments.Host
         public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
+            services.AddControllers();
             ConfigureDapper(services);          
             RegisterServices(services);
             RegisterMassTransit(services);
@@ -39,6 +40,10 @@ namespace Master.Microservices.Payments.Host
         {
             base.Configure(app, env);
             app.ConfigureSwagger("v1/swagger.json", "PaymentService API V1");
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
 
         public override void AddHostedService(IServiceCollection services)

@@ -16,11 +16,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Master.Microservices.Orders.Host
 {
     public class Startup : ServiceStartupBase
     {
+        private const string AuthoirizePolicy = "AuthorizePolicy";
         public Startup(IConfiguration configuration) : base(configuration)
         {
         }
@@ -29,17 +31,28 @@ namespace Master.Microservices.Orders.Host
         public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
+            services.AddControllers();
             ConfigureEfCore(services);
             RegisterServices(services);
             RegisterMassTransit(services);
             RegisterCqrsHandlers(services);
             services.AddHealthChecks();
             services.AddSwagger("OrdersService", "v1");
+            AddIdentity(services);
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             base.Configure(app, env);          
             app.ConfigureSwagger("/swagger/v1/swagger.json", "Orders API");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers()
+                .RequireAuthorization(AuthoirizePolicy); // Policy can be enforced on controller and action level as well.
+            });
         }
         public override void AddHostedService(IServiceCollection services)
         {
@@ -85,6 +98,28 @@ namespace Master.Microservices.Orders.Host
             });
             services.AddMassTransitHostedService();
             services.AddScoped<IQueueProducer, QueueProducer>();
+        }
+        private void AddIdentity(IServiceCollection services)
+        {
+            services.AddAuthentication("Bearer")
+                    .AddJwtBearer("Bearer", options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.Authority = "http://localhost:5005";
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateAudience = false
+                        };
+                    });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(AuthoirizePolicy, policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "api"); 
+                });
+            });
         }
         #endregion
     }

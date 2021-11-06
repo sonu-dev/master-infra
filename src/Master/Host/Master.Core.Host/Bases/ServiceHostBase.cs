@@ -12,6 +12,8 @@ namespace Master.Core.Host.Bases
     {
         public void Run(string[] args)
         {
+            Console.Title = ServiceName;
+
             //Read Configuration from appSettings
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")

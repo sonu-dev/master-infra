@@ -22,8 +22,7 @@ namespace Master.Core.Host.Bases
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public virtual void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();
+        {           
             services.ConfigureCommonServices();
             ConfigureHealthCheckServices(services.AddHealthChecks());
             ConfigureOptions(services);
@@ -52,12 +51,8 @@ namespace Master.Core.Host.Bases
             .AllowAnyMethod()
             .AllowAnyHeader());
             app.UseSerilogRequestLogging();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();              
-            });
+            app.UseStaticFiles();
+            app.UseRouting();          
             ConfigureHealthChecks(app);
         }
         #endregion

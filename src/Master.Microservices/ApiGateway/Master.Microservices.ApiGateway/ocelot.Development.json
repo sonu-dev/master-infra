@@ -13,7 +13,7 @@
       ],
       "UpstreamPathTemplate": "/api/Orders/ping",
       "UpstreamHttpMethod": [ "GET", "POST" ],
-      "Key": "order-ping"
+      "Key": "order-ping"     
     },
     {
       "DownstreamPathTemplate": "/api/Order/{everything}",
@@ -26,7 +26,11 @@
       ],
       "UpstreamPathTemplate": "/api/Orders/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
-      "SwaggerKey": "order"
+      "SwaggerKey": "order",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      }
     },
     // ProductController - OrdersService
     {

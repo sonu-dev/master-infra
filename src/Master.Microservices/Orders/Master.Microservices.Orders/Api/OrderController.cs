@@ -4,6 +4,7 @@ using Master.Microservices.Common.Bases.Cqrs;
 using Master.Microservices.Orders.Commands.CreateOrder;
 using Master.Microservices.Orders.Commands.PayOrder;
 using Master.Microservices.Orders.ViewModels.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Master.Microservices.Orders.Api
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class OrderController : ApiControllerBase<OrderController>
     {
         protected readonly IMediatorPublisher _mediator;
