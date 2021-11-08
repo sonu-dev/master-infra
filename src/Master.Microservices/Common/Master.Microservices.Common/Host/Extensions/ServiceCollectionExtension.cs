@@ -1,4 +1,5 @@
-﻿using Master.Microservices.Common.Identity;
+﻿using Master.Microservices.Common.Constants;
+using Master.Microservices.Common.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -9,7 +10,7 @@ using System.Collections.Generic;
 namespace Master.Microservices.Common.Host.Extensions
 {
     public static class ServiceCollectionExtension
-    {
+    {       
         public static void AddSwagger(this IServiceCollection services, string apiTitle, string version)
         {
             services.AddSwaggerGen(c =>
@@ -18,7 +19,7 @@ namespace Master.Microservices.Common.Host.Extensions
             });
         }
 
-        public static void AddIdentity(this IServiceCollection services, IConfiguration configuration, string policy, List<IdentityClaim> claims)
+        public static void AddIdentity(this IServiceCollection services, IConfiguration configuration, List<IdentityClaim> claims)
         {
             services.AddHttpContextAccessor();
 
@@ -42,7 +43,7 @@ namespace Master.Microservices.Common.Host.Extensions
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(policy, policy =>
+                options.AddPolicy(IdentityConstants.AuthoirizePolicy, policy =>
                 {
                     policy.RequireAuthenticatedUser();
                     claims.ForEach(c => policy.RequireClaim(c.ClaimType, c.ClaimValue));                    

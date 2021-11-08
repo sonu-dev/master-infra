@@ -4,6 +4,7 @@ using Master.Core.Host.Bases;
 using Master.Microservices.Common.Constants;
 using Master.Microservices.Common.Dapper;
 using Master.Microservices.Common.Host.Extensions;
+using Master.Microservices.Common.Identity;
 using Master.Microservices.Common.RabbitMq.Configurations;
 using Master.Microservices.Common.RabbitMq.Constants;
 using Master.Microservices.Common.RabbitMq.Producer;
@@ -16,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 
 namespace Master.Microservices.Payments.Host
 {
@@ -34,16 +36,14 @@ namespace Master.Microservices.Payments.Host
             RegisterServices(services);
             RegisterMassTransit(services);
             services.AddSwagger("PaymentsService", "v1");
+            services.AddIdentity(Configuration, new List<IdentityClaim> { new IdentityClaim("scope", "api") });
         }
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             base.Configure(app, env);
             app.ConfigureSwagger("v1/swagger.json", "PaymentService API V1");
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.ConfigureIdentity();
         }
 
         public override void AddHostedService(IServiceCollection services)

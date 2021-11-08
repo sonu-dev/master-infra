@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Master.Microservices.Common.Constants;
+using Microsoft.AspNetCore.Builder;
 
 namespace Master.Microservices.Common.Host.Extensions
 {
@@ -10,6 +11,18 @@ namespace Master.Microservices.Common.Host.Extensions
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint(url, name);
+            });
+        }
+
+        public static void ConfigureIdentity(this IApplicationBuilder app)
+        {
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers()
+                .RequireAuthorization(IdentityConstants.AuthoirizePolicy); // Policy can be enforced on controller and action level as well.
             });
         }
     }

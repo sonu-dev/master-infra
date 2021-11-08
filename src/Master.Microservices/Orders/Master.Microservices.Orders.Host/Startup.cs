@@ -39,21 +39,13 @@ namespace Master.Microservices.Orders.Host
             RegisterCqrsHandlers(services);
             services.AddHealthChecks();
             services.AddSwagger("OrdersService", "v1");
-            services.AddIdentity(Configuration, AuthoirizePolicy, new List<IdentityClaim> { new IdentityClaim("scope", "api") });
+            services.AddIdentity(Configuration, new List<IdentityClaim> { new IdentityClaim("scope", "api") });
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             base.Configure(app, env);          
             app.ConfigureSwagger("/swagger/v1/swagger.json", "Orders API");
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers()
-                .RequireAuthorization(AuthoirizePolicy); // Policy can be enforced on controller and action level as well.
-            });
+            app.ConfigureIdentity();
         }
         public override void AddHostedService(IServiceCollection services)
         {
