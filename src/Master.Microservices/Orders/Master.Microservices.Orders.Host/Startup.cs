@@ -2,6 +2,7 @@ using MassTransit;
 using Master.Core.Host.Bases;
 using Master.Microservices.Common.Bases.Cqrs;
 using Master.Microservices.Common.Host.Extensions;
+using Master.Microservices.Common.Identity;
 using Master.Microservices.Common.RabbitMq.Configurations;
 using Master.Microservices.Common.RabbitMq.Producer;
 using Master.Microservices.Orders.Consumers;
@@ -16,7 +17,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 
 namespace Master.Microservices.Orders.Host
 {
@@ -33,12 +34,12 @@ namespace Master.Microservices.Orders.Host
             base.ConfigureServices(services);
             services.AddControllers();
             ConfigureEfCore(services);
-            RegisterServices(services);
+            RegisterDataServices(services);           
             RegisterMassTransit(services);
             RegisterCqrsHandlers(services);
             services.AddHealthChecks();
             services.AddSwagger("OrdersService", "v1");
-            AddIdentity(services);
+            services.AddIdentity(Configuration, AuthoirizePolicy, new List<IdentityClaim> { new IdentityClaim("scope", "api") });
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -73,7 +74,7 @@ namespace Master.Microservices.Orders.Host
                 b => b.MigrationsAssembly("Master.Microservices.Orders.DataAccess")));
         }
 
-        private void RegisterServices(IServiceCollection services)
+        private void RegisterDataServices(IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
@@ -98,29 +99,7 @@ namespace Master.Microservices.Orders.Host
             });
             services.AddMassTransitHostedService();
             services.AddScoped<IQueueProducer, QueueProducer>();
-        }
-        private void AddIdentity(IServiceCollection services)
-        {
-            services.AddAuthentication("Bearer")
-                    .AddJwtBearer("Bearer", options =>
-                    {
-                        options.RequireHttpsMetadata = false;
-                        options.Authority = "http://localhost:5005";
-                        options.TokenValidationParameters = new TokenValidationParameters
-                        {
-                            ValidateAudience = false
-                        };
-                    });
-
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy(AuthoirizePolicy, policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api"); 
-                });
-            });
-        }
+        }       
         #endregion
     }
 }

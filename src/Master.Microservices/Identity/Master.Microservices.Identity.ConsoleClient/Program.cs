@@ -24,7 +24,7 @@ namespace Master.Microservices.Identity.ConsoleClient
             Console.WriteLine("\n\n");
 
             // call api
-            var response = await CallApiAsync(ApiConfig.OrdersApiEndpoint, "order", "ping", tokenResponse.AccessToken);
+            var response = await CallApiAsync(ApiConfig.OrdersApiEndpoint, "ping", tokenResponse.AccessToken);
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
@@ -32,6 +32,8 @@ namespace Master.Microservices.Identity.ConsoleClient
             }
             var content = await response.Content.ReadAsStringAsync();
             Console.WriteLine(JArray.Parse(content));
+
+            Console.ReadKey();
         }
 
         private static async Task<TokenResponse> RequestAccessTokenAsync(string identityAuthority)
@@ -56,12 +58,12 @@ namespace Master.Microservices.Identity.ConsoleClient
             return tokenResponse;
         }
 
-        private static async Task<HttpResponseMessage> CallApiAsync(string apiEndpoint, string controller, string action, string accessToken)
+        private static async Task<HttpResponseMessage> CallApiAsync(string apiEndpoint, string controller, string accessToken)
         {
             var apiClient = new HttpClient();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             apiClient.SetBearerToken(accessToken);
-            var response = await apiClient.GetAsync($"{ApiConfig.OrdersApiEndpoint}/{controller}/{action}");
+            var response = await apiClient.GetAsync($"{ApiConfig.OrdersApiEndpoint}/{controller}");
             return response;
         }
     }   

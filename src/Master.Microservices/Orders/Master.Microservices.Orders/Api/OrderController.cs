@@ -21,14 +21,7 @@ namespace Master.Microservices.Orders.Api
         public OrderController(ILog<OrderController> log, IMediatorPublisher mediator) : base(log)
         {
             _mediator = mediator;
-        }
-
-        [HttpGet]
-        [Route("Ping")]
-        public async Task<string> PingAsync()
-        {
-            return await Task.FromResult($"Server called at {DateTime.Now}");
-        }
+        }      
 
         [HttpPost]
         [Route("CreateOrder")]

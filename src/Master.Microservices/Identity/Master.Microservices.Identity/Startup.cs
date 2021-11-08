@@ -23,7 +23,7 @@ namespace Master.Microservices.Identity
             ConfigureIdentityServer(services);
         }
 
-        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)  
         {
            // base.Configure(app, env);           
             app.UseIdentityServer();

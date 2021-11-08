@@ -2,7 +2,7 @@
 {
     public class IdentityConfig
     {
-        public static string Authority = "http://localhost:5005";
+        public static string Authority = "https://localhost:5005";
 
     }
 }

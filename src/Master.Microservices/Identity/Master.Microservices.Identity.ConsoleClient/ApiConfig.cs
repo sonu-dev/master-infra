@@ -2,6 +2,6 @@
 {
     public class ApiConfig
     {
-        public const string OrdersApiEndpoint = "http://localhost:5001/api";
+        public const string OrdersApiEndpoint = "https://localhost:5001/api";
     }
 }

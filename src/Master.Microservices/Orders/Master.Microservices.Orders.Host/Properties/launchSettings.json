@@ -17,14 +17,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Master.Microservices.Catalog.Host": {
+    "Master.Microservices.Orders.Host": {
       "commandName": "Project",
       "launchBrowser": false,
       "launchUrl": "product",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5001" 
+      "applicationUrl": "https://localhost:5001" 
     }
   }
 }
