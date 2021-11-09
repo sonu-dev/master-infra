@@ -11,12 +11,20 @@ namespace Master.Microservices.Identity.Data
             {
                new Client
                {
-                   ClientId = "apiClient",
+                   ClientId = "ordersApiClient",
                    // no interactive user, use the clientid/secret for authentication
                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                   ClientSecrets = new List<Secret> { new Secret("secret".Sha256()) },
+                   ClientSecrets = new List<Secret> { new Secret("secret1".Sha256()) },
                    AllowedScopes = new List<string> { "api" }
-               }               
+               },
+               new Client
+               {
+                   ClientId = "paymentsApiClient",
+                   // no interactive user, use the clientid/secret for authentication
+                   AllowedGrantTypes = GrantTypes.ClientCredentials,
+                   ClientSecrets = new List<Secret> { new Secret("secret2".Sha256()) },
+                   AllowedScopes = new List<string> { "api" }
+               }
             };
         }
 

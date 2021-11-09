@@ -1,6 +1,7 @@
 using MassTransit;
 using Master.Core.Host.Bases;
 using Master.Microservices.Common.Bases.Cqrs;
+using Master.Microservices.Common.Constants;
 using Master.Microservices.Common.Host.Extensions;
 using Master.Microservices.Common.Identity;
 using Master.Microservices.Common.RabbitMq.Configurations;
@@ -39,7 +40,11 @@ namespace Master.Microservices.Orders.Host
             RegisterCqrsHandlers(services);
             services.AddHealthChecks();
             services.AddSwagger("OrdersService", "v1");
-            services.AddIdentity(Configuration, new List<IdentityClaim> { new IdentityClaim("scope", "api") });
+            services.AddIdentity(Configuration, new List<IdentityClaim> 
+            { 
+                new IdentityClaim(IdentityConstants.ClaimTypes.Scope, "api"),
+                new IdentityClaim(IdentityConstants.ClaimTypes.ClientId, "ordersApiClient")
+            });
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

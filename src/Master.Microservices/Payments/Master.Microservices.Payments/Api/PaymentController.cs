@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace Master.Microservices.Payments.Controllers
+namespace Master.Microservices.Payments.Api
 {
     [ApiController]
     [Route("api/[controller]")]
