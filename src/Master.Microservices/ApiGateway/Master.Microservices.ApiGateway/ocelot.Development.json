@@ -3,7 +3,7 @@
 
     // OrderController - OrdersService
     {
-      "DownstreamPathTemplate": "/api/Order/ping",
+      "DownstreamPathTemplate": "/api/ping/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -11,9 +11,13 @@
           "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/api/Orders/ping",
+      "UpstreamPathTemplate": "/api/ping-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
-      "Key": "order-ping"     
+      "Key": "ping-order-service",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Order/{everything}",
@@ -24,7 +28,7 @@
           "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/api/Orders/{everything}",
+      "UpstreamPathTemplate": "/api/order-api/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "SwaggerKey": "order",
       "AuthenticationOptions": {
@@ -73,7 +77,7 @@
       "UpstreamPathTemplate": "/api/Payments/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "SwaggerKey": "payment"
-    }
+    }   
   ],
   // Aggregates different api responses
   "Aggregates": [
