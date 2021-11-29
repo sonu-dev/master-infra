@@ -13,7 +13,7 @@ namespace Master.Microservices.ApiGateway.Client
             return disco;
         }
 
-        public static async Task<TokenResponse> RequestAccessTokenAsync(string tokenEndPoint, ClientCredentialsTokenRequest clientCredentialsTokenRequest)
+        public static async Task<TokenResponse> RequestAccessTokenAsync(ClientCredentialsTokenRequest clientCredentialsTokenRequest)
         {
             var client = new HttpClient();
             var tokenResponse = await client.RequestClientCredentialsTokenAsync(clientCredentialsTokenRequest);

@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\Bin\Payments</OutputPath>
+    <OutputPath>..\..\..\Bin\Microservices\Payments</OutputPath>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,7 +23,7 @@
 
   <ItemGroup>
     <Reference Include="Master.Core.Logging">
-      <HintPath>..\..\..\Master\Bin\Logging\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
+      <HintPath>..\..\..\Bin\Core\Logging\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
     </Reference>
   </ItemGroup>
 

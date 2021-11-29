@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\Bin\Common</OutputPath>
+    <OutputPath>..\..\..\Bin\Microservices\Common</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,16 +34,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Master.Core.DataAccess">
-      <HintPath>..\..\..\Master\Bin\DataAccess\netcoreapp3.1\Master.Core.DataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="Master.Core.Logging">
-      <HintPath>..\..\..\Master\Bin\Logging\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
-    </Reference>
+    <Folder Include="RabbitMq\Host\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="RabbitMq\Host\" />
+    <Reference Include="Master.Core.Host">
+      <HintPath>..\..\..\Bin\Core\Host\netcoreapp3.1\Master.Core.Host.dll</HintPath>
+    </Reference>
+    <Reference Include="Master.Core.Logging">
+      <HintPath>..\..\..\Bin\Core\Logging\netcoreapp3.1\Master.Core.Logging.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

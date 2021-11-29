@@ -23,9 +23,9 @@ namespace Master.Microservices.ApiGateway.Client
             }
 
             // STEP #2: Authenticate Api and get request token
-            var accessTokenResponse = await IdentityManager.RequestAccessTokenAsync(identityDisco.TokenEndpoint, new ClientCredentialsTokenRequest
+            var accessTokenResponse = await IdentityManager.RequestAccessTokenAsync(new ClientCredentialsTokenRequest
             {
-                Address = Constants.ApiConfig.OrdersService.ApiEndpoint,
+                Address = identityDisco.TokenEndpoint,
                 ClientId = Constants.ApiConfig.OrdersService.ClientId,
                 ClientSecret = Constants.ApiConfig.OrdersService.Secret,
                 Scope = Constants.ApiConfig.OrdersService.Scope

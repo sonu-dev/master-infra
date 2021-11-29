@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Master.Microservices.ApiGateway
 {
@@ -8,6 +9,7 @@ namespace Master.Microservices.ApiGateway
     {
         public static void Main(string[] args)
         {
+            Console.Title = "ApiGateway";
             CreateHostBuilder(args).Build().Run();
         }
 

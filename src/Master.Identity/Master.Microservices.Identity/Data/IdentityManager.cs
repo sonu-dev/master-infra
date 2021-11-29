@@ -1,5 +1,7 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityModel;
+using IdentityServer4.Models;
 using System.Collections.Generic;
+using static IdentityModel.OidcConstants;
 
 namespace Master.Microservices.Identity.Data
 {
@@ -13,16 +15,16 @@ namespace Master.Microservices.Identity.Data
                {
                    ClientId = "ordersApiClient",
                    // no interactive user, use the clientid/secret for authentication
-                   AllowedGrantTypes = GrantTypes.ClientCredentials,
-                   ClientSecrets = new List<Secret> { new Secret("secret1".Sha256()) },
+                   AllowedGrantTypes = new List<string> { GrantTypes.ClientCredentials },
+                   ClientSecrets = new List<Secret> { new Secret("secret1".ToSha256()) },
                    AllowedScopes = new List<string> { "api" }
                },
                new Client
                {
                    ClientId = "paymentsApiClient",
                    // no interactive user, use the clientid/secret for authentication
-                   AllowedGrantTypes = GrantTypes.ClientCredentials,
-                   ClientSecrets = new List<Secret> { new Secret("secret2".Sha256()) },
+                   AllowedGrantTypes = new List<string> { GrantTypes.ClientCredentials },
+                   ClientSecrets = new List<Secret> { new Secret("secret2".ToSha256()) },
                    AllowedScopes = new List<string> { "api" }
                }
             };
