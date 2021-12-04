@@ -1,6 +1,8 @@
+using IdentityServer4.AccessTokenValidation;
 using Master.Microservices.ApiGateway.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,7 +22,7 @@ namespace Master.Microservices.ApiGateway
             _configuration = configuration;
         }
         public void ConfigureServices(IServiceCollection services)
-        {   
+        {
             services.AddMvcCore().AddApiExplorer();
 
             // Add IdentityServer client
@@ -43,11 +45,6 @@ namespace Master.Microservices.ApiGateway
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
 
             //ocelot
             await app.UseOcelot();
@@ -57,7 +54,17 @@ namespace Master.Microservices.ApiGateway
             {
                 opt.PathToSwaggerGenerator = "/swagger/docs";
             });
+
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthentication();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Hello World!");
+                });
+            });
         }
 
         private void AddIdentity(IServiceCollection services)
@@ -65,16 +72,13 @@ namespace Master.Microservices.ApiGateway
             var identityOptions = new IdentityOption();
             _configuration.GetSection(typeof(IdentityOption).Name).Bind(identityOptions);
 
-            services.AddAuthentication("Bearer")
-          .AddIdentityServerAuthentication()
-          .AddJwtBearer(identityOptions.IdentityProviderKey, options =>
-          {
-              options.Authority = identityOptions.Authority;
-              options.TokenValidationParameters = new TokenValidationParameters
-              {
-                  ValidateAudience = false
-              };
-          });
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+           .AddIdentityServerAuthentication(identityOptions.IdentityProviderKey, options =>
+           {
+               options.Authority = identityOptions.Authority;
+               options.RequireHttpsMetadata = false;
+               options.SupportedTokens = SupportedTokens.Both;
+           });
         }
     }
 }

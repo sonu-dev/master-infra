@@ -24,7 +24,6 @@ namespace Master.Microservices.Orders.Host
 {
     public class Startup : ServiceStartupBase
     {
-        private const string AuthoirizePolicy = "AuthorizePolicy";
         public Startup(IConfiguration configuration) : base(configuration)
         {
         }
@@ -40,17 +39,24 @@ namespace Master.Microservices.Orders.Host
             RegisterCqrsHandlers(services);
             services.AddHealthChecks();
             services.AddSwagger("OrdersService", "v1");
-            services.AddIdentity(Configuration, new List<IdentityClaim> 
-            { 
+            services.AddIdentity(Configuration, new List<IdentityClaim>
+            {
                 new IdentityClaim(IdentityConstants.ClaimTypes.Scope, "api"),
                 new IdentityClaim(IdentityConstants.ClaimTypes.ClientId, "ordersApiClient")
             });
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            base.Configure(app, env);          
-            app.ConfigureSwagger("/swagger/v1/swagger.json", "Orders API");
-            app.ConfigureIdentity();
+            base.Configure(app, env);
+            app.ConfigureSwagger("/swagger/v1/swagger.json", "Orders API");          
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers()
+                .RequireAuthorization(IdentityConstants.AuthoirizePolicy); // Policy can be enforced on controller and action level as well.
+            });
         }
         public override void AddHostedService(IServiceCollection services)
         {

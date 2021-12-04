@@ -45,7 +45,7 @@ namespace Master.Microservices.Common.Host.Extensions
             {
                 options.AddPolicy(IdentityConstants.AuthoirizePolicy, policy =>
                 {
-                    policy.RequireAuthenticatedUser();
+                    //policy.RequireAuthenticatedUser();
                     claims.ForEach(c => policy.RequireClaim(c.ClaimType, c.ClaimValue));                    
                 });
             });

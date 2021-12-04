@@ -13,17 +13,5 @@ namespace Master.Microservices.Common.Host.Extensions
                 c.SwaggerEndpoint(url, name);
             });
         }
-
-        public static void ConfigureIdentity(this IApplicationBuilder app)
-        {
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers()
-                .RequireAuthorization(IdentityConstants.AuthoirizePolicy); // Policy can be enforced on controller and action level as well.
-            });
-        }
     }
 }

@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
+
 namespace Master.Microservices.Identity.ConsoleClient
 {
     class Program
@@ -17,8 +18,7 @@ namespace Master.Microservices.Identity.ConsoleClient
             var tokenResponse = await RequestAccessToken(documentResponse.TokenEndpoint, Api.Orders.ClientId, Api.Orders.Secret, Api.Orders.Scope);
             if (tokenResponse.IsError)
             {
-                Console.WriteLine(tokenResponse.Error);
-                return;
+                Console.WriteLine(tokenResponse.Error);               
             }
 
             Console.WriteLine(tokenResponse.Json);
@@ -28,12 +28,14 @@ namespace Master.Microservices.Identity.ConsoleClient
             var response = await CallApiAsync(Api.Orders.ApiEndpoint, "ping", tokenResponse.AccessToken);
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine(response.StatusCode);
-                return;
+                Console.WriteLine(response.StatusCode);               
             }
             var content = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JArray.Parse(content));
-
+            if (!string.IsNullOrEmpty(content))
+            {
+                Console.WriteLine(JArray.Parse(content));
+            }
+           
             Console.ReadKey();
         }
 

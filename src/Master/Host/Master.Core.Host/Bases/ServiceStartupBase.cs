@@ -51,9 +51,8 @@ namespace Master.Core.Host.Bases
             .AllowAnyMethod()
             .AllowAnyHeader());
             app.UseSerilogRequestLogging();
-            app.UseStaticFiles();
-            app.UseRouting();          
-            ConfigureHealthChecks(app);
+            app.UseStaticFiles();  
+            ConfigureHealthChecks(app);            
         }
         #endregion
 

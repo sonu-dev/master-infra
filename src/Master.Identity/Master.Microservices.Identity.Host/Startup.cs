@@ -10,29 +10,30 @@ namespace Master.Microservices.Identity
 {
     public class Startup : ServiceStartupBase
     {
-        public Startup(IConfiguration configuration): base(configuration)
-        {          
-        }       
+        public Startup(IConfiguration configuration) : base(configuration)
+        {
+        }
 
         #region ServiceStartupBase Members
         public override void ConfigureServices(IServiceCollection services)
         {
             base.ConfigureServices(services);
-            services.AddRouting();           
-            //services.AddControllersWithViews();           
+            services.AddRouting();
+            services.AddControllersWithViews();
             ConfigureIdentityServer(services);
         }
 
-        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)  
+        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           // base.Configure(app, env);           
+            base.Configure(app, env);
             app.UseIdentityServer();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //});
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+             {
+                 endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller=home}/{action=index}/{id?}");
+             });
         }
         public override void AddHostedService(IServiceCollection services)
         {
@@ -45,10 +46,9 @@ namespace Master.Microservices.Identity
         private void ConfigureIdentityServer(IServiceCollection services)
         {
             var builder = services.AddIdentityServer()
+                .AddDeveloperSigningCredential() //This is for dev only scenarios when you don’t have a certificate to use.
                .AddInMemoryClients(IdentityManager.GetClients())
-               .AddInMemoryApiScopes(IdentityManager.GetApiScopes());               
-
-            builder.AddDeveloperSigningCredential(); //This is for dev only scenarios when you don’t have a certificate to use.
+               .AddInMemoryApiScopes(IdentityManager.GetApiScopes());
         }
         #endregion       
     }

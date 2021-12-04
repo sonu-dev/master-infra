@@ -7,7 +7,8 @@ namespace Master.Microservices.ApiGateway.Client
     {
        public static async Task Main(string[] args)
         {
-            var apiUrl = $"{Constants.ApiConfig.OrdersService.ApiEndpoint}{Constants.ApiConfig.OrdersService.Actions.Ping}";
+            Console.Title = "ApiGateway Client";
+            var apiUrl = $"{Constants.ApiConfig.BaseUrl}/{Constants.ApiConfig.OrdersService.Actions.Ping}";
             var client = new Client();
             await client.ExecuteAsync(apiUrl);
 

@@ -43,8 +43,7 @@ namespace Master.Microservices.Payments.Host
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             base.Configure(app, env);
-            app.ConfigureSwagger("v1/swagger.json", "PaymentService API V1");
-            app.ConfigureIdentity();
+            app.ConfigureSwagger("v1/swagger.json", "PaymentService API V1");           
         }
 
         public override void AddHostedService(IServiceCollection services)
