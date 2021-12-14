@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  master.microservices.identity.host:
+    image: ${DOCKER_REGISTRY-}master-identity
+    build:
+      context: .
+      dockerfile: Master.Identity/Master.Microservices.Identity.Host/Dockerfile
+
+  master.microservices.orders.host:
+    image: ${DOCKER_REGISTRY-}master-services-orders
+    build:
+      context: .
+      dockerfile: Master.Microservices/Orders/Master.Microservices.Orders.Host/Dockerfile

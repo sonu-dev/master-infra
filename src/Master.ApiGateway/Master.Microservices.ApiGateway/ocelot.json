@@ -21,14 +21,14 @@
     },
     {
       "DownstreamPathTemplate": "/api/Order/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/api/order-api/{everything}",
+      "UpstreamPathTemplate": "/gw/order/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "SwaggerKey": "order",
       "AuthenticationOptions": {
@@ -46,7 +46,7 @@
           "Port": "5001"
         }
       ],
-      "UpstreamPathTemplate": "/api/Products/{everything}",
+      "UpstreamPathTemplate": "/gw/Product/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "SwaggerKey": "order"
     },
@@ -54,27 +54,27 @@
     // PaymentController - PaymentsService
     {
       "DownstreamPathTemplate": "/api/Payment/ping",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": "5002"
         }
       ],
-      "UpstreamPathTemplate": "/api/Payments/ping",
+      "UpstreamPathTemplate": "/gw/Payment/ping",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "Key": "payment-ping"
     },
     {
       "DownstreamPathTemplate": "/api/Payment/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": "5002"
         }
       ],
-      "UpstreamPathTemplate": "/api/Payments/{everything}",
+      "UpstreamPathTemplate": "/gw/Payment/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST" ],
       "SwaggerKey": "payment"
     }   
@@ -96,7 +96,7 @@
         {
           "Name": "Orders API",
           "Version": "v1",
-          "Url": "http://localhost:5001/swagger/v1/swagger.json"
+          "Url": "https://localhost:5001/swagger/v1/swagger.json"
         }
       ]
     },
@@ -106,7 +106,7 @@
         {
           "Name": "Payments API",
           "Version": "v1",
-          "Url": "http://localhost:5002/swagger/v1/swagger.json"
+          "Url": "https://localhost:5002/swagger/v1/swagger.json"
         }
       ]
     }

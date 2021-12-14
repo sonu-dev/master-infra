@@ -1,6 +1,7 @@
 ﻿using IdentityModel;
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static IdentityModel.OidcConstants;
 
 namespace Master.Microservices.Identity.Data
@@ -75,5 +76,6 @@ namespace Master.Microservices.Identity.Data
         //        }
         //    };
         //}
+
     }
 }

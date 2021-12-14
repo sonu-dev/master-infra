@@ -19,11 +19,15 @@
     },
     "Master.Microservices.Orders.Host": {
       "commandName": "Project",
-      "launchBrowser": false,     
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:5001" 
+      "applicationUrl": "https://localhost:5001"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/ping",
+      "publishAllPorts": true
     }
   }
 }

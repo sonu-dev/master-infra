@@ -1,0 +1,22 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["Master.Identity/Master.Microservices.Identity.Host/Master.Microservices.Identity.Host.csproj", "Master.Identity/Master.Microservices.Identity.Host/"]
+COPY ["Master.Identity/Master.Microservices.Identity/Master.Microservices.Identity.csproj", "Master.Identity/Master.Microservices.Identity/"]
+RUN dotnet restore "Master.Identity/Master.Microservices.Identity.Host/Master.Microservices.Identity.Host.csproj"
+COPY . .
+WORKDIR "/src/Master.Identity/Master.Microservices.Identity.Host"
+RUN dotnet build "Master.Microservices.Identity.Host.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "Master.Microservices.Identity.Host.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Master.Microservices.Identity.Host.dll"]

@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  master.microservices.identity.host:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5005:80"
+
+  master.microservices.orders.host:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5001:80"
