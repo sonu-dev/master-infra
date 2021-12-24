@@ -3,6 +3,10 @@
 @{
     var version = FileVersionInfo.GetVersionInfo(typeof(IdentityServer4.Hosting.IdentityServerMiddleware).Assembly.Location).ProductVersion.Split('+').First();
 }
+@{
+    ViewData["Title"] = "Home";
+}
+@model TokenRequestViewModel
 
 <div class="welcome-page">
     <h1>
@@ -29,4 +33,27 @@
             and <a href="https://github.com/IdentityServer/IdentityServer4/tree/main/samples">ready to use samples</a>.
         </li>
     </ul>
+    <h3>Generate Token</h3>
+    <form asp-controller="home" asp-action="GenerateAccessToken" method="post">
+        <p>
+            <label asp-for="ClientId">ClientId</label>
+            <select asp-for="ClientId">
+                <option value="ordersApiClient">OrdersApiClient</option>
+                <option value="paymentsApiClient">PaymentsApiClient</option>
+            </select>
+        </p>
+        <p>
+            <label asp-for="Secret">Secret</label>
+            <input asp-for="Secret" value="secret1" type="text" />
+        </p>
+        <p>
+            <label asp-for="Scope">Scope</label>
+            <input asp-for="Scope" value="api" type="text" />
+        </p>
+
+        <p>
+            <input type="submit" value="Generate Token" /><br /><br />
+            Token: <input type="text" value="@ViewBag.Token" readonly="readonly" class="form-control" />
+        </p>
+    </form>
 </div>

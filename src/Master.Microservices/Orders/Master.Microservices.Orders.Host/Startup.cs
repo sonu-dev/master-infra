@@ -44,6 +44,7 @@ namespace Master.Microservices.Orders.Host
                 new IdentityClaim(IdentityConstants.ClaimTypes.Scope, "api"),
                 new IdentityClaim(IdentityConstants.ClaimTypes.ClientId, "ordersApiClient")
             });
+            services.AddVersioning();
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

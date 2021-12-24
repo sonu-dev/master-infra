@@ -1,10 +1,14 @@
-﻿using IdentityServer4.Services;
+﻿using IdentityModel.Client;
+using IdentityServer4.Services;
 using Master.Core.Logging;
+using Master.Microservices.Identity.Client;
 using Master.Microservices.Identity.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Master.Microservices.Identity.Controllers.Home
@@ -62,6 +66,13 @@ namespace Master.Microservices.Identity.Controllers.Home
             }
 
             return View("Error", vm);
+        }
+
+        public async Task<IActionResult> GenerateAccessToken([Bind("ClientId, Scope, Secret")]TokenRequestViewModel tokenRequestViewModel)
+        {
+            var tokenResponse = await IdentityClientManager.GenerateTokenAsync(tokenRequestViewModel.ClientId, tokenRequestViewModel.Scope, tokenRequestViewModel.Secret);
+            ViewBag.Token = tokenResponse.AccessToken;
+            return View("Index");
         }
         #endregion
     }

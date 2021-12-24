@@ -50,5 +50,18 @@ namespace Master.Microservices.Common.Host.Extensions
                 });
             });
         }
+
+        public static void AddVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(o =>
+            {
+                // Specify the default API Version as 1.0
+                o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+                // If the client hasn't specified the API version in the request, use the default API version number 
+                o.AssumeDefaultVersionWhenUnspecified = false;
+                // Advertise the API versions supported for the particular endpoint
+                o.ReportApiVersions = true;
+            });
+        }
     }
 }

@@ -9,8 +9,9 @@ using System.Linq;
 
 namespace Master.Microservices.Orders.Api
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiController]    
     [Authorize]
     public class PingController : ApiControllerBase<PingController>
     {
